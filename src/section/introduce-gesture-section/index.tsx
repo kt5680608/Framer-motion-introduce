@@ -118,12 +118,15 @@ function IntroduceGestureSection() {
                         <Box
                             id="introduce-variants-paragraph-container"
                             width="90%"
+                            display="flex"
+                            justifyContent="center"
+                            alignItems="center"
                         >
                             {" "}
                             <IntroduceParagraph>
                                 Motion extends the basic set of event listeners
-                                provided by React <br /> with simple yet
-                                powerful gesture recognizers.
+                                provided by React with simple yet powerful
+                                gesture recognizers.
                             </IntroduceParagraph>
                         </Box>
                     </IntroduceContainer>
@@ -210,8 +213,10 @@ function IntroduceGestureSection() {
                                 >
                                     <IntroduceParagraph>
                                         Motion extends the basic set of event
-                                        listeners provided by React <br /> with
-                                        simple yet powerful gesture recognizers.
+                                        listeners provided by React
+                                        <br />
+                                        with simple yet powerful gesture
+                                        recognizers.
                                     </IntroduceParagraph>
                                 </Box>
                             </IntroduceContainer>

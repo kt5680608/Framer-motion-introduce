@@ -12,7 +12,7 @@ export const MainContainer = styled.div<DeviceProps>`
     align-items: center;
 `;
 export const ExampleContainer = styled.div<DeviceProps>`
-    background: linear-gradient(135deg, #e09, #d0e);
+    background: linear-gradient(135deg, #40f, #05f);
     width: ${(props) => (props.device ? "45vw" : "80vw")};
     height: ${(props) => (props.device ? "70vh" : "35vh")};
     border-radius: ${(props) =>
@@ -26,7 +26,7 @@ export const ExampleContainer = styled.div<DeviceProps>`
 export const AnimatedBox = styled(motion.div)`
     width: 60px;
     height: 60px;
-    background: rgba(255, 255, 255, 0.45);
+    background-color: white;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(7px);
     -webkit-backdrop-filter: blur(7px);

@@ -253,7 +253,6 @@ function IntroduceAnimateSection() {
                             {" "}
                             <IntroduceParagraph>
                                 When animating between two separate components,
-                                <br />
                                 Framer Motion will take care of everything in
                                 between.
                             </IntroduceParagraph>
@@ -466,12 +465,14 @@ function IntroduceAnimateSection() {
                                     </Box>
                                 </Box>
                             </ControllerContainer>
-                            <IntroduceContainer>
+                            <IntroduceContainer device={isPc}>
                                 <Box
                                     id="introduce-variants-paragraph-container"
                                     width="90%"
+                                    display="flex"
+                                    justifyContent="center"
+                                    alignItems="center"
                                 >
-                                    {" "}
                                     <IntroduceParagraph>
                                         When animating between two separate
                                         components,

@@ -24,8 +24,8 @@ export const ExampleContainer = styled(motion.div)<DeviceProps>`
 `;
 
 export const AnimatedBox = styled(motion.div)`
-    width: 8vw;
-    height: 8vw;
+    width: 10vw;
+    height: 10vw;
     background-color: white;
     border-radius: 16px;
     cursor: grab;
@@ -78,6 +78,7 @@ export const IntroduceParagraph = styled.p`
     font-size: 1.4rem;
     color: white;
     line-height: 2rem;
+
     @media all and (min-width: 768px) and (max-width: 1023px) {
         font-size: 1.2rem;
     }
