@@ -19,9 +19,6 @@ function IntroduceAnimateSection() {
     const isPc = useMediaQuery({
         query: "(min-width:1024px)",
     });
-    const isTablet = useMediaQuery({
-        query: "(max-width:1023px)",
-    });
 
     const [animateX, setAnimateX] = useState(0);
     const [animateY, setAnimateY] = useState(0);

@@ -24,10 +24,7 @@ function IntroduceGestureSection() {
     const isPc = useMediaQuery({
         query: "(min-width:1024px)",
     });
-    console.log(isPc);
-    const isTablet = useMediaQuery({
-        query: "(max-width:1023px)",
-    });
+
     const constraintsRef = useRef(null);
     const [gestureInfo, setGestureInfo] = useState<gestureInfoProps[]>([]);
     const [arrId, setArrId] = useState(0);
