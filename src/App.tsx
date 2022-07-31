@@ -4,6 +4,7 @@ import {
     AnimateSection,
     GestureSection,
     VariantsSection,
+    SequenceSection,
 } from "./section";
 import { Box } from "hoondesign";
 function App() {
@@ -13,6 +14,7 @@ function App() {
             <AnimateSection />
             <GestureSection />
             <VariantsSection />
+            <SequenceSection />
         </Box>
     );
 }
