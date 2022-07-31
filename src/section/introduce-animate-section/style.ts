@@ -68,9 +68,8 @@ export const RangeInput = styled.input`
         width: 20px;
         background-color: #e09;
         border-radius: 50%;
-        box-shadow: none;
         cursor: pointer;
-        box-shadow: 0 0 2px 0 #555;
+        border: none;
     }
     &::-webkit-slider-runnable-track {
         border-radius: 8px;
