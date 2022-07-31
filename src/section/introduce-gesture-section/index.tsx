@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Box } from "hoondesign";
 import { useMediaQuery } from "react-responsive";
 import { MainHeading } from "../../globalStyles";
@@ -63,6 +63,16 @@ function IntroduceGestureSection() {
                                 device={isPc}
                             >
                                 <AnimatedBox
+                                    onDragStart={() => {
+                                        document.body.classList.add(
+                                            "prevent-scroll"
+                                        );
+                                    }}
+                                    onDragEnd={() => {
+                                        document.body.classList.remove(
+                                            "prevent-scroll"
+                                        );
+                                    }}
                                     whileDrag={{ borderRadius: "50%" }}
                                     whileHover={{ scale: 1.1 }}
                                     drag

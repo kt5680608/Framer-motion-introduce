@@ -28,6 +28,9 @@ export const AnimatedBox = styled(motion.div)`
     height: 8vw;
     background-color: white;
     border-radius: 16px;
+    body.prevent-scroll {
+        overflow-y: hidden;
+    }
 `;
 
 export const IntroduceContainer = styled.div<DeviceProps>`
