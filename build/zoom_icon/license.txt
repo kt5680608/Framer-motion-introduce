@@ -1,0 +1,11 @@
+Model Information:
+* title:	zoom icon
+* source:	https://sketchfab.com/3d-models/zoom-icon-38bf1e6e0a564fa6b0ad96814c12a271
+* author:	no_na (https://sketchfab.com/no_na)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "zoom icon" (https://sketchfab.com/3d-models/zoom-icon-38bf1e6e0a564fa6b0ad96814c12a271) by no_na (https://sketchfab.com/no_na) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
