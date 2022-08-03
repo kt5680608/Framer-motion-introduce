@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex } from "hoondesign";
+import { Box } from "hoondesign";
 import { MainHeading } from "../../globalStyles";
 import { MainContainer } from "./style";
 function LandingSection() {

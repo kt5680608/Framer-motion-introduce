@@ -1,14 +1,13 @@
-import React, { Suspense, useState } from "react";
-import { MainContainer, ExampleContainer, GlassButton } from "./style";
+import React, { Suspense } from "react";
+import { MainContainer, ExampleContainer } from "./style";
 import { Box } from "hoondesign";
 import { MainHeading } from "../../globalStyles";
 import { useMediaQuery } from "react-responsive";
 import { Canvas } from "react-three-fiber";
 import { motion } from "framer-motion-3d";
-import { Html, useGLTF } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 
 function IntroduceThreeSection() {
-    const [isHover, setIsHover] = useState(false);
     const gltf = useGLTF("/thinking_emoji/scene.gltf", true);
     const Model = () => {
         return (
