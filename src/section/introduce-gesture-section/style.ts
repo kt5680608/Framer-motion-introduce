@@ -4,7 +4,7 @@ import { DeviceProps } from "../types";
 
 export const MainContainer = styled.div<DeviceProps>`
     width: 100vw;
-    height: ${(props) => (props.device ? "120vh" : "120vh")};
+    min-height: ${(props) => (props.device ? "120vh" : "160vh")};
     background-color: var(--g-color-background);
     display: flex;
     flex-direction: column;
