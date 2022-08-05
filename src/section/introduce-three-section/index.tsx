@@ -1,4 +1,4 @@
-import { Suspense, useLayoutEffect, useRef, useEffect, useState } from "react";
+import { Suspense, useRef, useEffect, useState } from "react";
 import {
     MainContainer,
     ExampleContainer,
@@ -8,11 +8,10 @@ import {
 import { Box } from "hoondesign";
 import { MainHeading } from "../../globalStyles";
 import { useMediaQuery } from "react-responsive";
-import { Canvas, useThree } from "react-three-fiber";
+import { Canvas } from "react-three-fiber";
 import { motion } from "framer-motion-3d";
 import {
     useMotionValue,
-    MotionValue,
     useSpring,
     useTransform,
     MotionConfig,
