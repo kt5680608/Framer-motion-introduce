@@ -2,7 +2,6 @@ import { Suspense, useRef, useEffect, useState } from "react";
 import {
     MainContainer,
     ExampleContainer,
-    BoundsRefContainer,
     IntroduceContainer,
     IntroduceParagraph,
 } from "./style";
@@ -18,13 +17,10 @@ import {
     MotionConfig,
 } from "framer-motion";
 import { useGLTF } from "@react-three/drei";
-import useMeasure from "react-use-measure";
 
 const spring = { stiffness: 600, damping: 30 };
 
 function IntroduceThreeSection() {
-    // pointer bounds control
-    const [ref, bounds] = useMeasure({ scroll: false });
     // model load
     const gltf = useGLTF("/thinking_emoji/scene.gltf", true);
 
@@ -83,44 +79,34 @@ function IntroduceThreeSection() {
                             ref={exampleContainerRef}
                             device={isPc}
                             onPointerMove={(e) => {
-                                mouseX.set(
-                                    width / -2 +
-                                        e.nativeEvent.offsetX -
-                                        bounds.x -
-                                        bounds.width / 2
-                                );
+                                mouseX.set(width / -2 + e.nativeEvent.offsetX);
 
                                 mouseY.set(
-                                    height / -2 +
-                                        e.nativeEvent.offsetY * 1.2 -
-                                        bounds.y -
-                                        bounds.height / 2
+                                    height / -2 + e.nativeEvent.offsetY * 1.2
                                 );
                             }}
                         >
-                            <BoundsRefContainer ref={ref}>
-                                <Canvas>
-                                    <Suspense>
-                                        <MotionConfig
-                                            transition={{
-                                                type: "spring",
-                                                duration: 0.7,
-                                                bounce: 0.2,
-                                            }}
-                                        />
-                                        <motion.group
-                                            rotation={[
-                                                mouseRotateY,
-                                                mouseRotateX,
-                                                0,
-                                            ]}
-                                        >
-                                            <Lights />
-                                            <Model />
-                                        </motion.group>
-                                    </Suspense>
-                                </Canvas>
-                            </BoundsRefContainer>
+                            <Canvas>
+                                <Suspense>
+                                    <MotionConfig
+                                        transition={{
+                                            type: "spring",
+                                            duration: 0.7,
+                                            bounce: 0.2,
+                                        }}
+                                    />
+                                    <motion.group
+                                        rotation={[
+                                            mouseRotateY,
+                                            mouseRotateX,
+                                            0,
+                                        ]}
+                                    >
+                                        <Lights />
+                                        <Model />
+                                    </motion.group>
+                                </Suspense>
+                            </Canvas>
                         </ExampleContainer>
                     </Box>
                 </Box>

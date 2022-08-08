@@ -13,20 +13,16 @@ export const MainContainer = styled.div<DeviceProps>`
 `;
 
 export const ExampleContainer = styled(motion.div)<DeviceProps>`
+    background-color: #141414;
     width: 80vw;
     height: ${(props) => (props.device ? "70vh" : "35vh")};
-`;
-
-export const BoundsRefContainer = styled.div`
-    width: 100%;
-    height: 100%;
-    background-color: #141414;
     border-radius: 24px 24px 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 `;
+
 
 export const GlassButton = styled(motion.button)`
     background: rgba(255, 255, 255, 0.1);
