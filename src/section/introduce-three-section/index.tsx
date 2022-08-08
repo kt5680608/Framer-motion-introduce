@@ -17,10 +17,13 @@ import {
     MotionConfig,
 } from "framer-motion";
 import { useGLTF } from "@react-three/drei";
+import useMeasure from "react-use-measure";
 
 const spring = { stiffness: 600, damping: 30 };
 
 function IntroduceThreeSection() {
+    // pointer bounds control
+    const [ref, bounds] = useMeasure({ scroll: false });
     // model load
     const gltf = useGLTF("/thinking_emoji/scene.gltf", true);
 
@@ -79,10 +82,18 @@ function IntroduceThreeSection() {
                             ref={exampleContainerRef}
                             device={isPc}
                             onPointerMove={(e) => {
-                                mouseX.set(width / -2 + e.nativeEvent.offsetX);
+                                mouseX.set(
+                                    width / -2 +
+                                        e.nativeEvent.offsetX -
+                                        bounds.x -
+                                        bounds.width / 2
+                                );
 
                                 mouseY.set(
-                                    height / -2 + e.nativeEvent.offsetY * 1.2
+                                    height / -2 +
+                                        e.nativeEvent.offsetY * 1.2 -
+                                        bounds.y -
+                                        bounds.height / 2
                                 );
                             }}
                         >
