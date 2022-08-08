@@ -2,6 +2,7 @@ import { Suspense, useRef, useEffect, useState } from "react";
 import {
     MainContainer,
     ExampleContainer,
+    BoundsRefContainer,
     IntroduceContainer,
     IntroduceParagraph,
 } from "./style";
@@ -97,27 +98,29 @@ function IntroduceThreeSection() {
                                 );
                             }}
                         >
-                            <Canvas>
-                                <Suspense>
-                                    <MotionConfig
-                                        transition={{
-                                            type: "spring",
-                                            duration: 0.7,
-                                            bounce: 0.2,
-                                        }}
-                                    />
-                                    <motion.group
-                                        rotation={[
-                                            mouseRotateY,
-                                            mouseRotateX,
-                                            0,
-                                        ]}
-                                    >
-                                        <Lights />
-                                        <Model />
-                                    </motion.group>
-                                </Suspense>
-                            </Canvas>
+                            <BoundsRefContainer ref={ref}>
+                                <Canvas>
+                                    <Suspense>
+                                        <MotionConfig
+                                            transition={{
+                                                type: "spring",
+                                                duration: 0.7,
+                                                bounce: 0.2,
+                                            }}
+                                        />
+                                        <motion.group
+                                            rotation={[
+                                                mouseRotateY,
+                                                mouseRotateX,
+                                                0,
+                                            ]}
+                                        >
+                                            <Lights />
+                                            <Model />
+                                        </motion.group>
+                                    </Suspense>
+                                </Canvas>
+                            </BoundsRefContainer>
                         </ExampleContainer>
                     </Box>
                 </Box>
