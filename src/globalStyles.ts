@@ -34,6 +34,10 @@ export const GlobalStyles = createGlobalStyle`
             margin: 0;
             padding: 0;
         }
+        hr{
+        margin: 4px;
+        width: 100%;
+    }
     }
     pre{
         margin: 0;
@@ -75,6 +79,7 @@ export const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding: 0;
     }
+   
 }
 `;
 

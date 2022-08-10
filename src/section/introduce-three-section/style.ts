@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { DeviceProps } from "../types";
 import { motion } from "framer-motion";
-
+import { StyledP } from "../../globalStyles";
 export const MainContainer = styled.div<DeviceProps>`
     width: 100vw;
-    min-height: ${(props) => (props.device ? "120vh" : "160vh")};
+    height: 100%;
     background-color: var(--g-color-background);
     display: flex;
     flex-direction: column;
@@ -14,7 +14,7 @@ export const MainContainer = styled.div<DeviceProps>`
 
 export const ExampleContainer = styled(motion.div)<DeviceProps>`
     background-color: #141414;
-    width: 80vw;
+    width: ${(props) => (props.device ? "45vw" : "80vw")};
     height: ${(props) => (props.device ? "70vh" : "35vh")};
     border-radius: 24px 24px 0 0;
     display: flex;
@@ -22,7 +22,6 @@ export const ExampleContainer = styled(motion.div)<DeviceProps>`
     align-items: center;
     overflow: hidden;
 `;
-
 
 export const GlassButton = styled(motion.button)`
     background: rgba(255, 255, 255, 0.1);
@@ -66,4 +65,42 @@ export const IntroduceParagraph = styled.p`
     }
     color: white;
     line-height: 2rem;
+`;
+
+export const RangeNumber = styled(StyledP)`
+    width: 8rem;
+    @media all and (min-width: 768px) and (max-width: 1023px) {
+        font-size: 1.3rem;
+    }
+    @media all and (min-width: 480px) and (max-width: 767px) {
+        font-size: 1.2rem;
+    }
+    @media all and (max-width: 479px) {
+        font-size: 1rem;
+    }
+`;
+export const RangeInput = styled.input`
+    width: 50%;
+    appearance: none;
+    background-color: transparent;
+    &:focus {
+        outline: none;
+    }
+    &::-webkit-slider-thumb {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-appearance: none;
+        height: 20px;
+        width: 20px;
+        background-color: #e09;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+    }
+    &::-webkit-slider-runnable-track {
+        border-radius: 8px;
+        height: 30%;
+        background-color: #707070;
+    }
 `;

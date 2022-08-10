@@ -6,6 +6,7 @@ import {
     VariantsSection,
     SequenceSection,
     ThreeSection,
+    CustomSection,
 } from "./section";
 import { Box } from "hoondesign";
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <VariantsSection />
             <SequenceSection />
             <ThreeSection />
+            <CustomSection />
         </Box>
     );
 }

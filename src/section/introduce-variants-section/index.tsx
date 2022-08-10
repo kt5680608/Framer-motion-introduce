@@ -86,10 +86,9 @@ function VariantsSection() {
         },
     };
     return (
-        <MainContainer>
+        <MainContainer device={isPc}>
             {isPc ? (
                 <>
-                    {" "}
                     <Box id="introduce-variants-heading-container">
                         <MainHeading size="4rem">3. VARIANTS</MainHeading>
                     </Box>

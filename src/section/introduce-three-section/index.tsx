@@ -56,7 +56,7 @@ function IntroduceThreeSection() {
         query: "(min-width:1024px)",
     });
     return (
-        <MainContainer>
+        <MainContainer device={isPc}>
             <>
                 <Box id="introduce-animate-heading-container">
                     <MainHeading size="4rem">5. Three</MainHeading>
@@ -101,6 +101,9 @@ function IntroduceThreeSection() {
                                             mouseRotateX,
                                             0,
                                         ]}
+                                        whileHover={{
+                                            scale: 1.1,
+                                        }}
                                     >
                                         <Lights />
                                         <Model />

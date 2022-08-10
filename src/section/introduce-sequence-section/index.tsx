@@ -13,7 +13,7 @@ function IntroduceSequenceSection() {
         query: "(min-width:1024px)",
     });
     return (
-        <MainContainer>
+        <MainContainer device={isPc}>
             <>
                 <Box id="introduce-animate-heading-container">
                     <MainHeading size="4rem">4. SEQUENCE</MainHeading>

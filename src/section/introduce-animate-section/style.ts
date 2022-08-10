@@ -5,7 +5,7 @@ import { DeviceProps } from "../types";
 
 export const MainContainer = styled.div<DeviceProps>`
     width: 100vw;
-    min-height: ${(props) => (props.device ? "120vh" : "160vh")};
+    height: 100%;
     background-color: var(--g-color-background);
     display: flex;
     flex-direction: column;
@@ -25,8 +25,8 @@ export const ExampleContainer = styled(motion.div)<DeviceProps>`
 `;
 
 export const AnimatedBox = styled(motion.div)`
-    width: 8vw;
-    height: 8vw;
+    width: 14vw;
+    height: 14vw;
     background-color: white;
     border-radius: 16px;
 `;
