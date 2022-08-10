@@ -14,7 +14,7 @@ export const MainContainer = styled.div<DeviceProps>`
 
 export const ExampleContainer = styled(motion.div)<DeviceProps>`
     background-color: #141414;
-    width: ${(props) => (props.device ? "45vw" : "80vw")};
+    width: 80vw;
     height: ${(props) => (props.device ? "70vh" : "35vh")};
     border-radius: 24px 24px 0 0;
     display: flex;
