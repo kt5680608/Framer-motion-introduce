@@ -3,16 +3,17 @@ import { Box } from "hoondesign";
 import { useMediaQuery } from "react-responsive";
 import { MainHeading } from "../../globalStyles";
 import {
-    MainContainer,
-    ExampleContainer,
     AnimatedBox,
     ConsoleContainer,
     CodeParagraph,
     CodeSpan,
-    IntroduceContainer,
-    IntroduceParagraph,
 } from "./style";
-
+import {
+    MainContainer,
+    ExampleContainer,
+    IntroduceParagraph,
+    IntroduceContainer,
+} from "../section-styles";
 interface gestureInfoProps {
     id: number;
     x: number;
@@ -38,7 +39,7 @@ function IntroduceGestureSection() {
         </CodeParagraph>
     ));
     return (
-        <MainContainer device={isPc}>
+        <MainContainer isPc={isPc}>
             {isPc ? (
                 <>
                     <Box id="introduce-gesture-heading-container">
@@ -60,7 +61,8 @@ function IntroduceGestureSection() {
                         >
                             <ExampleContainer
                                 ref={constraintsRef}
-                                device={isPc}
+                                isPc={isPc}
+                                backgroundColor="linear-gradient(135deg, #a2e, #d0e);"
                             >
                                 <AnimatedBox
                                     onDragStart={() => {
@@ -77,7 +79,7 @@ function IntroduceGestureSection() {
                                     whileHover={{ scale: 1.1 }}
                                     drag
                                     dragConstraints={constraintsRef}
-                                    onDrag={(event, info) => {
+                                    onDrag={(_, info) => {
                                         const value = {
                                             x: Math.floor(info.point.x),
                                             y: Math.floor(info.point.y),
@@ -118,13 +120,13 @@ function IntroduceGestureSection() {
                             </ExampleContainer>
                         </Box>
                         <Box id="introduce-gesture-console-container">
-                            <ConsoleContainer device={isPc}>
+                            <ConsoleContainer isPc={isPc}>
                                 {listItems}
                             </ConsoleContainer>
                         </Box>
                     </Box>
 
-                    <IntroduceContainer device={isPc}>
+                    <IntroduceContainer isPc={isPc}>
                         <Box
                             id="introduce-variants-paragraph-container"
                             width="90%"
@@ -164,7 +166,8 @@ function IntroduceGestureSection() {
                         >
                             <ExampleContainer
                                 ref={constraintsRef}
-                                device={isPc}
+                                isPc={isPc}
+                                backgroundColor="linear-gradient(135deg, #a2e, #d0e);"
                             >
                                 <AnimatedBox
                                     whileDrag={{ borderRadius: "50%" }}
@@ -212,11 +215,11 @@ function IntroduceGestureSection() {
                                 />
                             </ExampleContainer>
                             <Box id="introduce-gesture-console-container">
-                                <ConsoleContainer device={isPc}>
+                                <ConsoleContainer isPc={isPc}>
                                     {listItems}
                                 </ConsoleContainer>
                             </Box>
-                            <IntroduceContainer device={isPc}>
+                            <IntroduceContainer isPc={isPc}>
                                 <Box
                                     id="introduce-variants-paragraph-container"
                                     width="90%"

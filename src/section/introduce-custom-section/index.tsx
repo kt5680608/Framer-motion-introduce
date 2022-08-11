@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import {
-    MainContainer,
-    ExampleContainer,
     AnimatedCard,
     AnimatedCardImage,
     AnimatedCardParagraph,
     ButtonBox,
     ButtonContainer,
-    IntroduceContainer,
-    IntroduceParagraph,
 } from "./style";
+import {
+    MainContainer,
+    ExampleContainer,
+    IntroduceParagraph,
+    IntroduceContainer,
+} from "../section-styles";
 import { CgMathMinus, CgMathPlus } from "react-icons/cg";
 import { useMediaQuery } from "react-responsive";
 import { Box } from "hoondesign";
@@ -36,12 +38,12 @@ function IntroduceCustomSection() {
     useEffect(() => {
         if (cards.length > 4) {
             setTimeout(() => {
-                setCards((c) => c.splice(1, c.length));
+                setCards(cards.splice(1, cards.length));
             }, 60);
         }
     }, [cards.length]);
     return (
-        <MainContainer device={isPc}>
+        <MainContainer isPc={isPc}>
             <>
                 <Box id="introduce-animate-heading-container">
                     <MainHeading size="4rem">6. CUSTOMIZED</MainHeading>
@@ -61,7 +63,11 @@ function IntroduceCustomSection() {
                         alignItems="center"
                         flexDirection="column"
                     >
-                        <ExampleContainer device={isPc}>
+                        <ExampleContainer
+                            isPc={isPc}
+                            width="80vw;"
+                            backgroundColor="linear-gradient(135deg, #05f, #09f);"
+                        >
                             <ButtonContainer>
                                 <ButtonBox
                                     onClick={(e) => {

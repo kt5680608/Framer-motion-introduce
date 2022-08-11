@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
 import styled from "styled-components";
-import { DeviceProps } from "../types";
+import { motion } from "framer-motion";
+import { StyledP } from "../globalStyles";
+import { DeviceProps, ExampleContainerProps } from "./types";
 
 export const MainContainer = styled.div<DeviceProps>`
     width: 100vw;
@@ -12,35 +13,17 @@ export const MainContainer = styled.div<DeviceProps>`
     align-items: center;
 `;
 
-export const ExampleContainer = styled(motion.div)<DeviceProps>`
-    background-color: #141414;
-    width: 80vw;
-    height: ${(props) => (props.device ? "70vh" : "35vh")};
-    border-radius: 24px 24px 0 0;
+export const ExampleContainer = styled(motion.div)<ExampleContainerProps>`
+    background: ${(props) =>
+        props.backgroundColor ? props.backgroundColor : "#141414"};
+    width: ${(props) => (props.width ? "80vw" : props.isPc ? "45vw" : "80vw")};
+    height: ${(props) => (props.isPc === true ? "70vh" : "35vh")};
+    border-radius: ${(props) => (props.isPc ? "24px 0 0 0" : "24px 24px 0 0 ")};
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-`;
-
-export const AnimatedBox = styled(motion.div)`
-    width: 8vw;
-    height: 8vw;
-    background-color: white;
-    border-radius: 16px;
-    body.prevent-scroll {
-        overflow-y: hidden;
-    }
-`;
-
-export const IntroduceContainer = styled.div<DeviceProps>`
-    border-radius: 0 0 24px 24px;
-    width: ${(props) => (props.device ? "80%" : "80vw")};
-    background-color: #141414;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px 0 16px 0;
+    position: relative;
 `;
 
 export const IntroduceParagraph = styled.p`
@@ -58,4 +41,14 @@ export const IntroduceParagraph = styled.p`
     }
     color: white;
     line-height: 2rem;
+`;
+
+export const IntroduceContainer = styled.div<DeviceProps>`
+    border-radius: 0 0 24px 24px;
+    width: 80vw;
+    background-color: #141414;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0 16px 0;
 `;

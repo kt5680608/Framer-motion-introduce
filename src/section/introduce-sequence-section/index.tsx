@@ -5,15 +5,16 @@ import { MainHeading } from "../../globalStyles";
 import {
     MainContainer,
     ExampleContainer,
-    IntroduceContainer,
     IntroduceParagraph,
-} from "./style";
+    IntroduceContainer,
+} from "../section-styles";
+
 function IntroduceSequenceSection() {
     const isPc = useMediaQuery({
         query: "(min-width:1024px)",
     });
     return (
-        <MainContainer device={isPc}>
+        <MainContainer isPc={isPc}>
             <>
                 <Box id="introduce-animate-heading-container">
                     <MainHeading size="4rem">4. SEQUENCE</MainHeading>
@@ -32,7 +33,7 @@ function IntroduceSequenceSection() {
                         justifyContent="center"
                         alignItems="center"
                     >
-                        <ExampleContainer device={isPc}>
+                        <ExampleContainer isPc={isPc} width="80vw">
                             <RollingText
                                 numberValue={24587893}
                                 width="100%"

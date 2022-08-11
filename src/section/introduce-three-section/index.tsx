@@ -2,9 +2,9 @@ import { Suspense, useRef, useEffect, useState } from "react";
 import {
     MainContainer,
     ExampleContainer,
-    IntroduceContainer,
     IntroduceParagraph,
-} from "./style";
+    IntroduceContainer,
+} from "../section-styles";
 import { Box } from "hoondesign";
 import { MainHeading } from "../../globalStyles";
 import { useMediaQuery } from "react-responsive";
@@ -56,7 +56,7 @@ function IntroduceThreeSection() {
         query: "(min-width:1024px)",
     });
     return (
-        <MainContainer device={isPc}>
+        <MainContainer isPc={isPc}>
             <>
                 <Box id="introduce-animate-heading-container">
                     <MainHeading size="4rem">5. Three</MainHeading>
@@ -77,7 +77,8 @@ function IntroduceThreeSection() {
                     >
                         <ExampleContainer
                             ref={exampleContainerRef}
-                            device={isPc}
+                            isPc={isPc}
+                            width="80vw"
                             onPointerMove={(e) => {
                                 mouseX.set(width / -2 + e.nativeEvent.offsetX);
 

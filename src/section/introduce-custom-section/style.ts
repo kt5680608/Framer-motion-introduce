@@ -6,44 +6,14 @@ import {
     AnimatedCardParagraphProps,
 } from "../types";
 
-export const MainContainer = styled.div<DeviceProps>`
-    width: 100vw;
-    height: 100%;
-    background-color: var(--g-color-background);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`;
-export const ExampleContainer = styled(motion.div)<DeviceProps>`
-    position: relative;
-    background: linear-gradient(135deg, #05f, #09f);
-    width: 80vw;
-    height: ${(props) => (props.device ? "70vh" : "50vh")};
-    border-radius: 24px 24px 0 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
-
 export const ControllerContainer = styled.div<DeviceProps>`
     background-color: #141414;
-    width: ${(props) => (props.device ? "35vw" : "80vw")};
+    width: ${(props) => (props.isPc ? "35vw" : "80vw")};
     height: 70vh;
-    border-radius: ${(props) => (props.device ? "0 24px 0 0" : "0 0 0 0")};
+    border-radius: ${(props) => (props.isPc ? "0 24px 0 0" : "0 0 0 0")};
     display: flex;
     justify-content: space-around;
     align-items: center;
-`;
-
-export const IntroduceContainer = styled.div`
-    border-radius: 0 0 24px 24px;
-    width: 80vw;
-    background-color: #141414;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px 0 16px 0;
 `;
 
 export const AnimatedCard = styled(motion.div)<CustomSectionAnimatedCardProps>`
@@ -95,21 +65,4 @@ export const ButtonContainer = styled.div`
     align-items: center;
     position: absolute;
     bottom: 4%;
-`;
-
-export const IntroduceParagraph = styled.p`
-    font-family: RFLEXREGULAR;
-    white-space: pre-wrap;
-    font-size: 1.4rem;
-    @media all and (min-width: 768px) and (max-width: 1023px) {
-        font-size: 1.2rem;
-    }
-    @media all and (min-width: 480px) and (max-width: 767px) {
-        font-size: 1.2rem;
-    }
-    @media all and (max-width: 479px) {
-        font-size: 1rem;
-    }
-    color: white;
-    line-height: 2rem;
 `;

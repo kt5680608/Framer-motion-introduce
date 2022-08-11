@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import { Box } from "hoondesign";
 import { useMediaQuery } from "react-responsive";
 import {
-    MainContainer,
-    ExampleContainer,
     ControllerContainer,
-    IntroduceContainer,
     AnimatedBox,
     RangeInput,
     RangeNumber,
     CodeSpan,
     CodeParagraph,
-    IntroduceParagraph,
 } from "./style";
+import {
+    MainContainer,
+    ExampleContainer,
+    IntroduceParagraph,
+    IntroduceContainer,
+} from "../section-styles";
 import { MainHeading } from "../../globalStyles";
 
 function IntroduceAnimateSection() {
@@ -37,7 +39,7 @@ function IntroduceAnimateSection() {
     const code8 = "     }}";
 
     return (
-        <MainContainer device={isPc}>
+        <MainContainer isPc={isPc}>
             {isPc ? (
                 <>
                     <Box id="introduce-animate-heading-container">
@@ -57,7 +59,10 @@ function IntroduceAnimateSection() {
                             justifyContent="center"
                             alignItems="center"
                         >
-                            <ExampleContainer device={isPc}>
+                            <ExampleContainer
+                                isPc={isPc}
+                                backgroundColor="linear-gradient(135deg, #e09, #d0e);"
+                            >
                                 <AnimatedBox
                                     initial={{
                                         x: 0,
@@ -75,7 +80,7 @@ function IntroduceAnimateSection() {
                             </ExampleContainer>
                         </Box>
                         <Box id="introudce-section-controller" width="100%">
-                            <ControllerContainer device={isPc}>
+                            <ControllerContainer isPc={isPc}>
                                 <Box
                                     id="introduce-animate-controller-code-container"
                                     width="100%"
@@ -279,7 +284,10 @@ function IntroduceAnimateSection() {
                             justifyContent="center"
                             alignItems="center"
                         >
-                            <ExampleContainer device={isPc}>
+                            <ExampleContainer
+                                isPc={isPc}
+                                backgroundColor="linear-gradient(135deg, #e09, #d0e);"
+                            >
                                 <AnimatedBox
                                     initial={{
                                         x: 0,
@@ -297,7 +305,7 @@ function IntroduceAnimateSection() {
                             </ExampleContainer>
                         </Box>
                         <Box id="introudce-section-controller">
-                            <ControllerContainer device={isPc}>
+                            <ControllerContainer isPc={isPc}>
                                 <Box
                                     id="introduce-animate-controller-detail-container"
                                     width="100%"
@@ -465,7 +473,7 @@ function IntroduceAnimateSection() {
                                     </Box>
                                 </Box>
                             </ControllerContainer>
-                            <IntroduceContainer device={isPc}>
+                            <IntroduceContainer isPc={isPc}>
                                 <Box
                                     id="introduce-variants-paragraph-container"
                                     width="90%"

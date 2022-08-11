@@ -6,17 +6,19 @@ import { MainHeading } from "../../globalStyles";
 import { motion } from "framer-motion";
 import { MdRefresh } from "react-icons/md";
 import {
-    MainContainer,
-    ExampleContainer,
     AnimatedBox,
     GlassBox,
     GlassButton,
     ControllerContainer,
     CodeParagraph,
     CodeSpan,
-    IntroduceContainer,
-    IntroduceParagraph,
 } from "./style";
+import {
+    MainContainer,
+    ExampleContainer,
+    IntroduceParagraph,
+    IntroduceContainer,
+} from "../section-styles";
 
 function VariantsSection() {
     const isPc = useMediaQuery({
@@ -86,7 +88,7 @@ function VariantsSection() {
         },
     };
     return (
-        <MainContainer device={isPc}>
+        <MainContainer isPc={isPc}>
             {isPc ? (
                 <>
                     <Box id="introduce-variants-heading-container">
@@ -106,10 +108,14 @@ function VariantsSection() {
                             justifyContent="center"
                             alignItems="center"
                         >
-                            <ExampleContainer ref={ref} device={isPc}>
+                            <ExampleContainer
+                                ref={ref}
+                                isPc={isPc}
+                                backgroundColor="linear-gradient(135deg, #40f, #05f)"
+                            >
                                 <GlassButton
                                     isMobile={isMobile}
-                                    device={isPc}
+                                    isPc={isPc}
                                     variants={hoverParent}
                                     initial="rest"
                                     whileHover="hover"
@@ -146,7 +152,7 @@ function VariantsSection() {
                             </ExampleContainer>
                         </Box>
                         <Box id="introudce-variants-controller">
-                            <ControllerContainer device={isPc}>
+                            <ControllerContainer isPc={isPc}>
                                 <Box
                                     id="introduce-variants-controller-code-container"
                                     width="100%"
@@ -213,7 +219,7 @@ function VariantsSection() {
                             </ControllerContainer>
                         </Box>
                     </Box>
-                    <IntroduceContainer device={isPc}>
+                    <IntroduceContainer isPc={isPc}>
                         <Box
                             id="introduce-variants-paragraph-container"
                             width="90%"
@@ -251,10 +257,14 @@ function VariantsSection() {
                             justifyContent="center"
                             alignItems="center"
                         >
-                            <ExampleContainer ref={ref} device={isPc}>
+                            <ExampleContainer
+                                ref={ref}
+                                isPc={isPc}
+                                backgroundColor="linear-gradient(135deg, #40f, #05f)"
+                            >
                                 <GlassButton
                                     isMobile={isMobile}
-                                    device={isPc}
+                                    isPc={isPc}
                                     variants={hoverParent}
                                     initial="rest"
                                     whileHover="hover"
@@ -291,7 +301,7 @@ function VariantsSection() {
                             </ExampleContainer>
                         </Box>
                         <Box id="introudce-variants-controller">
-                            <ControllerContainer device={isPc}>
+                            <ControllerContainer isPc={isPc}>
                                 <Box
                                     id="introduce-variants-controller-code-container"
                                     width="100%"
@@ -358,7 +368,7 @@ function VariantsSection() {
                             </ControllerContainer>
                         </Box>
                     </Box>
-                    <IntroduceContainer device={isPc}>
+                    <IntroduceContainer isPc={isPc}>
                         <Box
                             id="introduce-variants-paragraph-container"
                             width="90%"

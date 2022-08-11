@@ -1,8 +1,12 @@
 export interface DeviceProps {
-    device?: boolean;
+    isPc?: boolean;
     isMobile?: boolean;
 }
 
+export interface ExampleContainerProps extends DeviceProps {
+    backgroundColor?: string;
+    width?: string;
+}
 export interface CustomSectionAnimatedCardProps {
     isPc?: boolean;
     isMobile?: boolean;
