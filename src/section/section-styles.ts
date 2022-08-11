@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { StyledP } from "../globalStyles";
 import { DeviceProps, ExampleContainerProps } from "./types";
 
 export const MainContainer = styled.div<DeviceProps>`
