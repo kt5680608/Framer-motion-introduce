@@ -18,6 +18,12 @@ import { Box } from "hoondesign";
 import { MainHeading } from "../../globalStyles";
 
 function IntroduceCustomSection() {
+    const calcSkew = (index: number) => {
+        return (
+            Math.log(cards.length / 2 - index / 2) * index -
+            Math.log(cards.length / 2 - index / 2) * cards.length
+        );
+    };
     const isPc = useMediaQuery({
         query: "(min-width:1024px)",
     });
@@ -26,7 +32,7 @@ function IntroduceCustomSection() {
     });
     const [cards, setCards] = useState([1]);
     const onClickPlusBtn = () => {
-        if (cards.length <= 4) {
+        if (cards.length <= 5) {
             setCards((prev) => [...prev, 1]);
         }
     };
@@ -36,7 +42,7 @@ function IntroduceCustomSection() {
         }
     };
     useEffect(() => {
-        if (cards.length > 4) {
+        if (cards.length > 5) {
             setTimeout(() => {
                 setCards(cards.splice(1, cards.length));
             }, 60);
@@ -93,21 +99,25 @@ function IntroduceCustomSection() {
                             </ButtonContainer>
                             {cards.map((_, index) => (
                                 <AnimatedCard
+                                    index={index}
                                     isMobile={isMobile}
                                     isPc={isPc}
                                     style={{
                                         originX: 0,
-                                        originY: 0,
+                                        originY: 1,
 
                                         zIndex: 999 - index,
                                     }}
                                     initial={{
                                         rotate: 0,
+                                        x: 6 * index - 6 * cards.length - 1,
+                                        y: 6 * index - 6 * cards.length - 1,
                                     }}
                                     animate={{
-                                        rotate: 1.3 * index - cards.length,
-                                        y: 1 * (4 * index + -4 * cards.length),
-                                        x: 1 * (2 * index + -2 * cards.length),
+                                        y: 6 * index - 6 * cards.length - 1,
+                                        x: 6 * index - 6 * cards.length - 1,
+
+                                        skewY: calcSkew(index),
                                     }}
                                 >
                                     {index === 0 && (

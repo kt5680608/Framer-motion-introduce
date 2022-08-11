@@ -17,7 +17,7 @@ function App() {
             <GestureSection />
             <VariantsSection />
             <SequenceSection />
-            <ThreeSection />
+            {/* <ThreeSection /> */}
             <CustomSection />
         </Box>
     );

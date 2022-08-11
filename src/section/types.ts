@@ -10,6 +10,8 @@ export interface ExampleContainerProps extends DeviceProps {
 export interface CustomSectionAnimatedCardProps {
     isPc?: boolean;
     isMobile?: boolean;
+
+    index: number;
 }
 
 export interface AnimatedCardParagraphProps {

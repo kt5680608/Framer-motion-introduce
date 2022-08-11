@@ -21,11 +21,13 @@ export const AnimatedCard = styled(motion.div)<CustomSectionAnimatedCardProps>`
     height: 16vw;
     border-radius: 16px;
     position: absolute;
-    box-shadow: 0 12px 12px 0 rgba(31, 38, 135, 0.6);
+    box-shadow: ${(props) =>
+        props.index <= 4 && "0 12px 12px 0 rgba(31, 38, 135, 0.6)"};
     display: flex;
     justify-content: space-around;
     padding: calc(1vw + 4px);
-    background-color: #efeff1;
+    background-color: ${(props) =>
+        props.index > 4 ? "transparent" : "#efeff1"};
     align-items: space-around;
     flex-direction: column;
 `;
