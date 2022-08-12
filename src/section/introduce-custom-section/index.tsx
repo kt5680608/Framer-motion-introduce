@@ -45,7 +45,7 @@ function IntroduceCustomSection() {
     useEffect(() => {
         if (cards.length > 5) {
             setTimeout(() => {
-                setCards(cards.splice(1, cards.length));
+                setCards((card) => card.splice(1, card.length));
             }, 60);
         }
     }, [cards.length]);
