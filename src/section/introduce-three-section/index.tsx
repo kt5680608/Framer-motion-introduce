@@ -1,4 +1,4 @@
-import { Suspense, useRef, useEffect, useState } from "react";
+import { Suspense, useRef } from "react";
 import {
     MainContainer,
     MainHeading,
@@ -26,17 +26,6 @@ function IntroduceThreeSection() {
 
     // ExampleContainer width height
     const exampleContainerRef = useRef<HTMLDivElement>(null);
-
-    const [width, setWidth] = useState<number>(0);
-    const [height, setHeight] = useState<number>(0);
-
-    useEffect(() => {
-        // set ExampleContainer width height
-        if (exampleContainerRef.current) {
-            setWidth(exampleContainerRef.current?.offsetWidth);
-            setHeight(exampleContainerRef.current?.offsetHeight);
-        }
-    }, [width, height]);
 
     // mapping mouse position
     const mouseX = useMotionValue(0);
@@ -80,11 +69,24 @@ function IntroduceThreeSection() {
                             isPc={isPc}
                             width="80vw"
                             onPointerMove={(e) => {
-                                mouseX.set(width / -2 + e.nativeEvent.offsetX);
-
-                                mouseY.set(
-                                    height / -2 + e.nativeEvent.offsetY * 1.2
-                                );
+                                if (exampleContainerRef.current !== null) {
+                                    mouseX.set(
+                                        exampleContainerRef.current
+                                            .offsetWidth /
+                                            -2 +
+                                            e.nativeEvent.offsetX
+                                    );
+                                    mouseY.set(
+                                        exampleContainerRef.current
+                                            .offsetHeight /
+                                            -2 +
+                                            e.nativeEvent.offsetY * 1.2
+                                    );
+                                    console.log(
+                                        exampleContainerRef.current.offsetWidth,
+                                        e.nativeEvent.offsetX
+                                    );
+                                }
                             }}
                         >
                             <Canvas>
