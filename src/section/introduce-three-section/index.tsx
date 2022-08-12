@@ -1,12 +1,12 @@
 import { Suspense, useRef, useEffect, useState } from "react";
 import {
     MainContainer,
+    MainHeading,
     ExampleContainer,
     IntroduceParagraph,
     IntroduceContainer,
 } from "../section-styles";
 import { Box } from "hoondesign";
-import { MainHeading } from "../../globalStyles";
 import { useMediaQuery } from "react-responsive";
 import { Canvas } from "react-three-fiber";
 import { motion } from "framer-motion-3d";

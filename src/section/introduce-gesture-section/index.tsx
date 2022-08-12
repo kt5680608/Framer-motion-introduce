@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Box } from "hoondesign";
 import { useMediaQuery } from "react-responsive";
-import { MainHeading } from "../../globalStyles";
 import {
     AnimatedBox,
     ConsoleContainer,
@@ -10,6 +9,7 @@ import {
 } from "./style";
 import {
     MainContainer,
+    MainHeading,
     ExampleContainer,
     IntroduceParagraph,
     IntroduceContainer,

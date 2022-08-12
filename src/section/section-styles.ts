@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { IDeviceProps, IExampleContainerProps } from "./types";
+import {
+    IDeviceProps,
+    IExampleContainerProps,
+    IMainHeadingProps,
+} from "./types";
 
 export const MainContainer = styled.div<IDeviceProps>`
     width: 100vw;
@@ -10,6 +14,7 @@ export const MainContainer = styled.div<IDeviceProps>`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 12vh;
 `;
 
 export const ExampleContainer = styled(motion.div)<IExampleContainerProps>`
@@ -67,4 +72,29 @@ export const IntroduceContainer = styled.div<IDeviceProps>`
     justify-content: center;
     align-items: center;
     padding: 16px 0 16px 0;
+`;
+export const MainHeading = styled.h1<IMainHeadingProps>`
+    font-family: "RFLEXBLACK";
+    font-weight: 900;
+    color: white;
+    font-size: ${(props) => (props.size ? props.size : "1rem")};
+    text-align: center;
+    @media all and (min-width: 768px) and (max-width: 1023px) {
+        font-size: 4rem;
+    }
+    @media all and (min-width: 480px) and (max-width: 767px) {
+        font-size: 3.5rem;
+    }
+    @media all and (max-width: 479px) {
+        font-size: 2.5rem;
+    }
+`;
+
+export const StyledP = styled.p`
+    color: white;
+    font-family: "RFLEXBLACK";
+    font-weight: 900;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    line-height: 1.4;
 `;

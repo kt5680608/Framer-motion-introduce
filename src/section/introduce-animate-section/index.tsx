@@ -15,7 +15,7 @@ import {
     IntroduceParagraph,
     IntroduceContainer,
 } from "../section-styles";
-import { MainHeading } from "../../globalStyles";
+import { MainHeading } from "../section-styles";
 
 function IntroduceAnimateSection() {
     const isPc = useMediaQuery({

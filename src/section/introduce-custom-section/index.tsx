@@ -15,7 +15,7 @@ import {
 import { CgMathMinus, CgMathPlus } from "react-icons/cg";
 import { useMediaQuery } from "react-responsive";
 import { Box } from "hoondesign";
-import { MainHeading } from "../../globalStyles";
+import { MainHeading } from "../section-styles";
 
 function IntroduceCustomSection() {
     const calcSkew = (index: number) => {

@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, RollingText } from "hoondesign";
 import { useMediaQuery } from "react-responsive";
-import { MainHeading } from "../../globalStyles";
 import {
     MainContainer,
+    MainHeading,
     ExampleContainer,
     IntroduceParagraph,
     IntroduceContainer,

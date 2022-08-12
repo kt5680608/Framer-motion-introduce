@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useInView } from "react-intersection-observer";
 import { Box } from "hoondesign";
-import { MainHeading } from "../../globalStyles";
 import { motion } from "framer-motion";
 import { MdRefresh } from "react-icons/md";
 import {
@@ -15,6 +14,7 @@ import {
 } from "./style";
 import {
     MainContainer,
+    MainHeading,
     ExampleContainer,
     IntroduceParagraph,
     IntroduceContainer,

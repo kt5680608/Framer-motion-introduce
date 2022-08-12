@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { GlobalStyles } from "./globalStyles";
+import { GlobalStyles } from "./global-styles";
 import { FontStyle } from "./fonts/fonts";
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement

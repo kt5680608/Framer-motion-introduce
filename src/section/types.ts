@@ -3,6 +3,10 @@ export interface IDeviceProps {
     isMobile?: boolean;
 }
 
+export interface IMainHeadingProps {
+    size?: string;
+}
+
 export interface IExampleContainerProps extends IDeviceProps {
     backgroundColor?: string;
     width?: string;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { StyledP } from "../../globalStyles";
+import { StyledP } from "../section-styles";
 import { IDeviceProps } from "../types";
 
 export const AnimatedBox = styled(motion.div)`

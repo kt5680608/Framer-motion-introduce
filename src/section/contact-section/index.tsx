@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "hoondesign";
-import { MainHeading } from "../../globalStyles";
+import { MainHeading } from "../section-styles";
 import {
     MainContainer,
     IntroduceContainer,
