@@ -14,6 +14,14 @@ export const GlobalStyles = createGlobalStyle`
         --system-color-codeTint6: #0bf;
         --system-palette-purpleLight: hsl(259, 100%, 71%)
     }
+    a {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    a:visited, a:focus, a:hover, a:active {
+    text-decoration: none;
+    }
     html{
         margin: 0;
         padding: 0;
@@ -38,18 +46,11 @@ export const GlobalStyles = createGlobalStyle`
         margin: 4px;
         width: 100%;
     }
+    
     }
     pre{
         margin: 0;
         line-height: 1.5;
-    }
-    a {
-    text-decoration: none;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-    a:visited, a:focus, a:hover, a:active {
-    text-decoration: none;
     }
     
     

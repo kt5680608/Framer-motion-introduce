@@ -7,6 +7,7 @@ import {
     IntroduceParagraph,
     IntroduceParagraphSpan,
 } from "../section-styles";
+import { ContactLink } from "./style";
 
 function ContactSection() {
     return (
@@ -35,25 +36,27 @@ function ContactSection() {
                             open-kakao
                         </IntroduceParagraphSpan>
                         :{" "}
-                        <a
+                        <ContactLink
+                            href="https://open.kakao.com/o/sodUugve"
                             onClick={() =>
                                 window.open("https://open.kakao.com/o/sodUugve")
                             }
                         >
                             https://open.kakao.com/o/sodUugve
-                        </a>
+                        </ContactLink>
                         <br />
                         <IntroduceParagraphSpan color="var(--system-color-codeTint1)">
                             github
                         </IntroduceParagraphSpan>{" "}
                         :{" "}
-                        <a
+                        <ContactLink
+                            href="https://github.com/kt5680608"
                             onClick={() =>
                                 window.open("https://github.com/kt5680608")
                             }
                         >
                             https://github.com/kt5680608
-                        </a>
+                        </ContactLink>
                     </IntroduceParagraph>
                 </IntroduceContainer>
             </Box>
