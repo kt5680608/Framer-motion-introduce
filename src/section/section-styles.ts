@@ -42,6 +42,23 @@ export const IntroduceParagraph = styled.p`
     line-height: 2rem;
 `;
 
+export const IntroduceParagraphSpan = styled.span`
+    font-family: RFLEXREGULAR;
+    white-space: pre-wrap;
+    font-size: 1.4rem;
+    @media all and (min-width: 768px) and (max-width: 1023px) {
+        font-size: 1.2rem;
+    }
+    @media all and (min-width: 480px) and (max-width: 767px) {
+        font-size: 1.2rem;
+    }
+    @media all and (max-width: 479px) {
+        font-size: 1rem;
+    }
+    line-height: 2rem;
+    color: ${(props) => (props.color ? props.color : "white")};
+`;
+
 export const IntroduceContainer = styled.div<IDeviceProps>`
     border-radius: 0 0 24px 24px;
     width: 80vw;

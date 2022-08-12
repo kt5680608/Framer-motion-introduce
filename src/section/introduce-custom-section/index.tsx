@@ -21,7 +21,8 @@ function IntroduceCustomSection() {
     const calcSkew = (index: number) => {
         return (
             Math.log(cards.length / 2 - index / 2) * index -
-            Math.log(cards.length / 2 - index / 2) * cards.length
+            Math.log(cards.length / 2 - index / 2) * cards.length -
+            1
         );
     };
     const isPc = useMediaQuery({

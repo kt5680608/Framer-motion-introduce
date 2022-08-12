@@ -13,8 +13,9 @@ function LandingSection() {
                 flexDirection="column"
             >
                 <MainHeading size="5rem">
-                    FRAMER-MOTION
-                    <br /> PLAYGROUND
+                    HOON'S ANIMATION
+                    <br />
+                    PLAYGROUND
                 </MainHeading>
             </Box>
         </MainContainer>

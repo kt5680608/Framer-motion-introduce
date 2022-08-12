@@ -7,6 +7,7 @@ import {
     SequenceSection,
     ThreeSection,
     CustomSection,
+    ContactSection,
 } from "./section";
 import { Box } from "hoondesign";
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <SequenceSection />
             {/* <ThreeSection /> */}
             <CustomSection />
+            <ContactSection />
         </Box>
     );
 }
