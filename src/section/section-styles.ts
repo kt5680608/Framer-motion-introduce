@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { DeviceProps, ExampleContainerProps } from "./types";
+import { IDeviceProps, IExampleContainerProps } from "./types";
 
-export const MainContainer = styled.div<DeviceProps>`
+export const MainContainer = styled.div<IDeviceProps>`
     width: 100vw;
     height: 100%;
     background-color: var(--g-color-background);
@@ -12,7 +12,7 @@ export const MainContainer = styled.div<DeviceProps>`
     align-items: center;
 `;
 
-export const ExampleContainer = styled(motion.div)<ExampleContainerProps>`
+export const ExampleContainer = styled(motion.div)<IExampleContainerProps>`
     background: ${(props) =>
         props.backgroundColor ? props.backgroundColor : "#141414"};
     width: ${(props) => (props.width ? "80vw" : props.isPc ? "45vw" : "80vw")};
@@ -42,7 +42,7 @@ export const IntroduceParagraph = styled.p`
     line-height: 2rem;
 `;
 
-export const IntroduceContainer = styled.div<DeviceProps>`
+export const IntroduceContainer = styled.div<IDeviceProps>`
     border-radius: 0 0 24px 24px;
     width: 80vw;
     background-color: #141414;

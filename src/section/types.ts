@@ -1,21 +1,28 @@
-export interface DeviceProps {
+export interface IDeviceProps {
     isPc?: boolean;
     isMobile?: boolean;
 }
 
-export interface ExampleContainerProps extends DeviceProps {
+export interface IExampleContainerProps extends IDeviceProps {
     backgroundColor?: string;
     width?: string;
 }
-export interface CustomSectionAnimatedCardProps {
+export interface ICustomSectionAnimatedCardProps {
     isPc?: boolean;
     isMobile?: boolean;
 
     index: number;
 }
 
-export interface AnimatedCardParagraphProps {
+export interface IAnimatedCardParagraphProps {
     isPc?: boolean;
     isMobile?: boolean;
     fontSize?: string;
+}
+
+export interface IGestureContainerInfoProps {
+    id: number;
+    x: number;
+    y: number;
+    type: string;
 }

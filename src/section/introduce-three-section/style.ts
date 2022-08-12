@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { DeviceProps } from "../types";
 import { motion } from "framer-motion";
 import { StyledP } from "../../globalStyles";
 

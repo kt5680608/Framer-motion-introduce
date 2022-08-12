@@ -14,12 +14,7 @@ import {
     IntroduceParagraph,
     IntroduceContainer,
 } from "../section-styles";
-interface gestureInfoProps {
-    id: number;
-    x: number;
-    y: number;
-    type: string;
-}
+import { IGestureContainerInfoProps } from "../types";
 
 function IntroduceGestureSection() {
     const isPc = useMediaQuery({
@@ -27,7 +22,9 @@ function IntroduceGestureSection() {
     });
 
     const constraintsRef = useRef(null);
-    const [gestureInfo, setGestureInfo] = useState<gestureInfoProps[]>([]);
+    const [gestureInfo, setGestureInfo] = useState<
+        IGestureContainerInfoProps[]
+    >([]);
     const [arrId, setArrId] = useState(0);
 
     const listItems = gestureInfo.map((item, index) => (
@@ -139,6 +136,11 @@ function IntroduceGestureSection() {
                                 Motion extends the basic set of event listeners
                                 provided by React with simple yet powerful
                                 gesture recognizers.
+                                <br />
+                                It currently has support for hover, tap, pan,
+                                viewport and drag gesture detection. Each
+                                gesture has a series of event listeners that you
+                                can attach to your motion component.
                             </IntroduceParagraph>
                         </Box>
                     </IntroduceContainer>
@@ -226,10 +228,14 @@ function IntroduceGestureSection() {
                                 >
                                     <IntroduceParagraph>
                                         Motion extends the basic set of event
-                                        listeners provided by React
+                                        listeners provided by React with simple
+                                        yet powerful gesture recognizers.
                                         <br />
-                                        with simple yet powerful gesture
-                                        recognizers.
+                                        It currently has support for hover, tap,
+                                        pan, viewport and drag gesture
+                                        detection. Each gesture has a series of
+                                        event listeners that you can attach to
+                                        your motion component.
                                     </IntroduceParagraph>
                                 </Box>
                             </IntroduceContainer>

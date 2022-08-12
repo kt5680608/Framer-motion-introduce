@@ -259,7 +259,8 @@ function IntroduceAnimateSection() {
                             <IntroduceParagraph>
                                 When animating between two separate components,
                                 Framer Motion will take care of everything in
-                                between.
+                                between. You can do several things based on this
+                                basic animation.
                             </IntroduceParagraph>
                         </Box>
                     </IntroduceContainer>{" "}
@@ -483,10 +484,10 @@ function IntroduceAnimateSection() {
                                 >
                                     <IntroduceParagraph>
                                         When animating between two separate
-                                        components,
-                                        <br />
-                                        Framer Motion will take care of
-                                        everything in between.
+                                        components, Framer Motion will take care
+                                        of everything in between. You can do
+                                        several things based on this basic
+                                        animation.
                                     </IntroduceParagraph>
                                 </Box>
                             </IntroduceContainer>

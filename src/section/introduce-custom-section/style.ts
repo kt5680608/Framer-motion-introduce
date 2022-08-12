@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import {
-    DeviceProps,
-    CustomSectionAnimatedCardProps,
-    AnimatedCardParagraphProps,
+    IDeviceProps,
+    ICustomSectionAnimatedCardProps,
+    IAnimatedCardParagraphProps,
 } from "../types";
 
-export const ControllerContainer = styled.div<DeviceProps>`
+export const ControllerContainer = styled.div<IDeviceProps>`
     background-color: #141414;
     width: ${(props) => (props.isPc ? "35vw" : "80vw")};
     height: 70vh;
@@ -16,7 +16,7 @@ export const ControllerContainer = styled.div<DeviceProps>`
     align-items: center;
 `;
 
-export const AnimatedCard = styled(motion.div)<CustomSectionAnimatedCardProps>`
+export const AnimatedCard = styled(motion.div)<ICustomSectionAnimatedCardProps>`
     width: calc(16vw * 1.618);
     height: 16vw;
     border-radius: 16px;
@@ -54,7 +54,7 @@ export const AnimatedCardImage = styled.img`
     position: relative;
 `;
 
-export const AnimatedCardParagraph = styled.p<AnimatedCardParagraphProps>`
+export const AnimatedCardParagraph = styled.p<IAnimatedCardParagraphProps>`
     font-family: RFLEXREGULAR;
     font-weight: 900;
     font-size: ${(props) => props.fontSize && props.fontSize};

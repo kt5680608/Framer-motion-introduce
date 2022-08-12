@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { DeviceProps } from "../types";
+import { IDeviceProps } from "../types";
 
 export const AnimatedBox = styled(motion.div)`
     width: 60px;
@@ -36,7 +36,7 @@ export const GlassBox = styled(motion.div)`
     height: 172px;
 `;
 
-export const GlassButton = styled(motion.div)<DeviceProps>`
+export const GlassButton = styled(motion.div)<IDeviceProps>`
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(7px);
@@ -54,7 +54,7 @@ export const GlassButton = styled(motion.div)<DeviceProps>`
     cursor: pointer;
 `;
 
-export const ControllerContainer = styled.div<DeviceProps>`
+export const ControllerContainer = styled.div<IDeviceProps>`
     background-color: #141414;
     width: ${(props) => (props.isPc ? "35vw" : "80vw")};
     height: ${(props) => (props.isPc ? "70vh" : "35vh")};

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { DeviceProps } from "../types";
+import { IDeviceProps } from "../types";
 
 export const AnimatedBox = styled(motion.div)`
     width: 10vw;
@@ -9,7 +9,7 @@ export const AnimatedBox = styled(motion.div)`
     border-radius: 16px;
     cursor: grab;
 `;
-export const ConsoleContainer = styled.div<DeviceProps>`
+export const ConsoleContainer = styled.div<IDeviceProps>`
     background-color: #141414;
     width: ${(props) => (props.isPc ? "35vw" : "80vw")};
     overflow: hidden;
