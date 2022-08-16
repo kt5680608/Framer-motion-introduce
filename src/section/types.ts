@@ -1,6 +1,7 @@
 export interface IDeviceProps {
     isPc?: boolean;
     isMobile?: boolean;
+    useRerender?(): () => void;
 }
 
 export interface IMainHeadingProps {

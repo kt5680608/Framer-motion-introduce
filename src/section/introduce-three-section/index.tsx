@@ -82,10 +82,6 @@ function IntroduceThreeSection() {
                                             -2 +
                                             e.nativeEvent.offsetY * 1.2
                                     );
-                                    console.log(
-                                        exampleContainerRef.current.offsetWidth,
-                                        e.nativeEvent.offsetX
-                                    );
                                 }
                             }}
                         >

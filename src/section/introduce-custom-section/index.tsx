@@ -18,6 +18,7 @@ import { Box } from "hoondesign";
 import { MainHeading } from "../section-styles";
 
 function IntroduceCustomSection() {
+    const [cards, setCards] = useState([1]);
     const calcSkew = (index: number) => {
         return (
             Math.log(cards.length / 2 - index / 2) * index -
@@ -31,22 +32,26 @@ function IntroduceCustomSection() {
     const isMobile = useMediaQuery({
         query: "(max-width:435px)",
     });
-    const [cards, setCards] = useState([1]);
+
     const onClickPlusBtn = () => {
-        if (cards.length <= 5) {
+        if (cards.length < 6) {
             setCards((prev) => [...prev, 1]);
         }
     };
     const onClickMinusBtn = () => {
         if (cards.length > 1) {
-            setCards(cards.splice(1, cards.length));
+            setCards(cards.splice(cards.length - 1));
         }
     };
     useEffect(() => {
         if (cards.length > 5) {
             setTimeout(() => {
-                setCards((card) => card.splice(1, card.length));
-            }, 60);
+                setCards((card) =>
+                    card.filter((_, index) => {
+                        return card.length - 1 !== index;
+                    })
+                );
+            }, 100);
         }
     }, [cards.length]);
     return (
