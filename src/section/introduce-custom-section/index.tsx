@@ -40,7 +40,11 @@ function IntroduceCustomSection() {
     };
     const onClickMinusBtn = () => {
         if (cards.length > 1) {
-            setCards(cards.splice(cards.length - 1));
+            setCards((card) =>
+                card.filter((_, index) => {
+                    return card.length - 1 !== index;
+                })
+            );
         }
     };
     useEffect(() => {
