@@ -101,7 +101,7 @@ function LoadingSection() {
                         </LoadingFlex>
                     </LoadingFlex>
                     <LoadingFlex>
-                        <LoadingP>Front Dev Hoon Portfolio</LoadingP>
+                        <LoadingP>Hoon's Playground Coming</LoadingP>
                     </LoadingFlex>
                 </LoadingFlex>
             </LoadingBox>
