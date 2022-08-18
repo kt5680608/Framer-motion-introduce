@@ -36,3 +36,7 @@ export interface IGestureContainerInfoProps {
 export interface IContactSectionProps extends IDeviceProps {
     sectionId: string;
 }
+
+export interface ILoadingFlexProps {
+    direction?: "row" | "column";
+}
