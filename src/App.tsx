@@ -20,15 +20,20 @@ function App() {
     }, []);
     return (
         <Box id="main-container" isAnimated={false}>
-            <LandingSection />
-            <AnimateSection />
-            <GestureSection />
-            <VariantsSection />
-            <SequenceSection />
-            <ThreeSection />
-            <CustomSection />
-            <ContactSection />
-            {loading && <LoadingSection />}
+            {loading ? (
+                <LoadingSection />
+            ) : (
+                <>
+                    <LandingSection />
+                    <AnimateSection />
+                    <GestureSection />
+                    <VariantsSection />
+                    <SequenceSection />
+                    <ThreeSection />
+                    <CustomSection />
+                    <ContactSection />
+                </>
+            )}
         </Box>
     );
 }
