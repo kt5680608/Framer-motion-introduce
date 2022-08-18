@@ -49,8 +49,9 @@ export const GlassButton = styled(motion.div)<IDeviceProps>`
     width: 30px;
     height: 30px;
     position: absolute;
-    left: ${(props) => (props.isMobile ? "84%" : "90%")};
-    bottom: ${(props) => (props.isPc ? "90%" : "80%")};
+    z-index: 888;
+    left: ${(props) => (props.isPc ? "90%" : "82%")};
+    bottom: ${(props) => (props.isPc ? "90%" : "82%")};
     cursor: pointer;
 `;
 
