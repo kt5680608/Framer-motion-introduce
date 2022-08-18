@@ -4,6 +4,7 @@ import { ILoadingFlexProps } from "../types";
 export const LoadingProgress = styled(motion.div)`
     width: 16px;
     height: 60px;
+    height: 100vh;
     background-color: white;
     position: absolute;
     @media (max-width: 426px) {
