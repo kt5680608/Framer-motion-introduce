@@ -3,11 +3,10 @@ import { Box } from "hoondesign";
 import { MainHeading } from "../section-styles";
 import {
     MainContainer,
-    IntroduceContainer,
     IntroduceParagraph,
     IntroduceParagraphSpan,
 } from "../section-styles";
-import { ContactLink } from "./style";
+import { ContactLink, ContactInfoContainer } from "./style";
 
 function ContactSection() {
     return (
@@ -25,42 +24,52 @@ function ContactSection() {
                 alignItems="center"
                 borderRadius="24px"
             >
-                <IntroduceContainer>
-                    <IntroduceParagraph>
-                        <IntroduceParagraphSpan color="var(--system-color-codeTint1)">
-                            e-mail
-                        </IntroduceParagraphSpan>
-                        : gns7893@naver.com
-                        <br />
-                        <IntroduceParagraphSpan color="var(--system-color-codeTint1)">
-                            open-kakao
-                        </IntroduceParagraphSpan>
-                        :{" "}
-                        <ContactLink
-                            href="https://open.kakao.com/o/sodUugve"
-                            onClick={() =>
-                                window.open("https://open.kakao.com/o/sodUugve")
-                            }
-                        >
-                            https://open.kakao.com/o/sodUugve
-                        </ContactLink>
-                        <br />
-                        <IntroduceParagraphSpan color="var(--system-color-codeTint1)">
-                            github
-                        </IntroduceParagraphSpan>{" "}
-                        :{" "}
-                        <ContactLink
-                            href="https://github.com/kt5680608"
-                            onClick={() =>
-                                window.open("https://github.com/kt5680608")
-                            }
-                        >
-                            https://github.com/kt5680608
-                        </ContactLink>
-                    </IntroduceParagraph>
-                </IntroduceContainer>
+                <ContactInfoContainer>
+                    <Box
+                        id="introduce-variants-paragraph-container"
+                        width="90%"
+                        display="flex"
+                        justifyContent="center"
+                        alignItems="center"
+                    >
+                        <IntroduceParagraph>
+                            <IntroduceParagraphSpan color="var(--system-color-codeTint1)">
+                                e-mail
+                            </IntroduceParagraphSpan>
+                            : gns7893@naver.com
+                            <br />
+                            <IntroduceParagraphSpan color="var(--system-color-codeTint1)">
+                                open-kakao
+                            </IntroduceParagraphSpan>
+                            :{" "}
+                            <ContactLink
+                                href="https://open.kakao.com/o/sodUugve"
+                                onClick={() =>
+                                    window.open(
+                                        "https://open.kakao.com/o/sodUugve"
+                                    )
+                                }
+                            >
+                                https://open.kakao.com/o/sodUugve
+                            </ContactLink>
+                            <br />
+                            <IntroduceParagraphSpan color="var(--system-color-codeTint1)">
+                                github
+                            </IntroduceParagraphSpan>{" "}
+                            :{" "}
+                            <ContactLink
+                                href="https://github.com/kt5680608"
+                                onClick={() =>
+                                    window.open("https://github.com/kt5680608")
+                                }
+                            >
+                                https://github.com/kt5680608
+                            </ContactLink>
+                        </IntroduceParagraph>
+                    </Box>
+                </ContactInfoContainer>
             </Box>
-            <Box id="main-footer-container" width="100vw" height="25vh"></Box>
+            <Box id="main-footer-container" width="100vw" height="15vh"></Box>
         </MainContainer>
     );
 }

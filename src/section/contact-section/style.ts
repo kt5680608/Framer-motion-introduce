@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IntroduceContainer } from "../section-styles";
 
 export const ContactLink = styled.a`
     color: white;
@@ -10,4 +11,8 @@ export const ContactLink = styled.a`
         text-decoration: none;
         color: white;
     }
+`;
+
+export const ContactInfoContainer = styled(IntroduceContainer)`
+    border-radius: 24px;
 `;

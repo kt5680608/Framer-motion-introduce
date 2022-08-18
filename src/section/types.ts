@@ -31,3 +31,7 @@ export interface IGestureContainerInfoProps {
     y: number;
     type: string;
 }
+
+export interface IContactSectionProps extends IDeviceProps {
+    sectionId: string;
+}
