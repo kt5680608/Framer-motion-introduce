@@ -65,6 +65,7 @@ function IntroduceThreeSection() {
                         alignItems="center"
                     >
                         <ExampleContainer
+                            type="secondary"
                             ref={exampleContainerRef}
                             isPc={isPc}
                             width="80vw"

@@ -22,7 +22,16 @@ export const ExampleContainer = styled(motion.div)<IExampleContainerProps>`
         props.backgroundColor ? props.backgroundColor : "#141414"};
     width: ${(props) => (props.width ? "80vw" : props.isPc ? "45vw" : "80vw")};
     height: ${(props) => (props.isPc === true ? "70vh" : "35vh")};
-    border-radius: ${(props) => (props.isPc ? "24px 0 0 0" : "24px 24px 0 0 ")};
+    ${(props) =>
+        props.type === "primary" &&
+        `
+        border-radius: ${props.isPc ? "24px 0 0 0" : "24px 24px 0 0 "};
+    `}
+    ${(props) =>
+        props.type === "secondary" &&
+        `
+        border-radius: 24px 24px 0 0;
+    `}
     display: flex;
     justify-content: center;
     align-items: center;

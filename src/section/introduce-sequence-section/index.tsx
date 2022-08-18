@@ -60,7 +60,11 @@ function IntroduceSequenceSection() {
                         justifyContent="center"
                         alignItems="center"
                     >
-                        <ExampleContainer isPc={isPc} width="80vw">
+                        <ExampleContainer
+                            isPc={isPc}
+                            width="80vw"
+                            type="secondary"
+                        >
                             <GlassButton
                                 isMobile={isMobile}
                                 isPc={isPc}

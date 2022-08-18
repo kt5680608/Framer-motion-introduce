@@ -109,6 +109,7 @@ function VariantsSection() {
                             alignItems="center"
                         >
                             <ExampleContainer
+                                type="primary"
                                 ref={ref}
                                 isPc={isPc}
                                 backgroundColor="linear-gradient(135deg, #40f, #05f)"
@@ -258,6 +259,7 @@ function VariantsSection() {
                             alignItems="center"
                         >
                             <ExampleContainer
+                                type="primary"
                                 ref={ref}
                                 isPc={isPc}
                                 backgroundColor="linear-gradient(135deg, #40f, #05f)"

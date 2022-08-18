@@ -60,6 +60,7 @@ function IntroduceAnimateSection() {
                             alignItems="center"
                         >
                             <ExampleContainer
+                                type="primary"
                                 isPc={isPc}
                                 backgroundColor="linear-gradient(135deg, #e09, #d0e);"
                             >
@@ -286,6 +287,7 @@ function IntroduceAnimateSection() {
                             alignItems="center"
                         >
                             <ExampleContainer
+                                type="primary"
                                 isPc={isPc}
                                 backgroundColor="linear-gradient(135deg, #e09, #d0e);"
                             >

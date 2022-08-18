@@ -11,6 +11,7 @@ export interface IMainHeadingProps {
 export interface IExampleContainerProps extends IDeviceProps {
     backgroundColor?: string;
     width?: string;
+    type: "primary" | "secondary";
 }
 export interface ICustomSectionAnimatedCardProps {
     isPc?: boolean;

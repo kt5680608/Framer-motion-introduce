@@ -57,6 +57,7 @@ function IntroduceGestureSection() {
                             alignItems="center"
                         >
                             <ExampleContainer
+                                type="primary"
                                 ref={constraintsRef}
                                 isPc={isPc}
                                 backgroundColor="linear-gradient(135deg, #a2e, #d0e);"
@@ -167,6 +168,7 @@ function IntroduceGestureSection() {
                             alignItems="center"
                         >
                             <ExampleContainer
+                                type="primary"
                                 ref={constraintsRef}
                                 isPc={isPc}
                                 backgroundColor="linear-gradient(135deg, #a2e, #d0e);"

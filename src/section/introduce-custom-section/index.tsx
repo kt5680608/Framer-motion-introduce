@@ -80,6 +80,7 @@ function IntroduceCustomSection() {
                         flexDirection="column"
                     >
                         <ExampleContainer
+                            type="secondary"
                             isPc={isPc}
                             width="80vw;"
                             backgroundColor="linear-gradient(135deg, #05f, #09f);"
