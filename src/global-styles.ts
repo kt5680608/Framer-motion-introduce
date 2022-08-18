@@ -17,8 +17,8 @@ export const GlobalStyles = createGlobalStyle`
     html{
         margin: 0;
         padding: 0;
-        font-size: 16px;
-       
+        font-size: 16px;   
+        background-color: #1a1a1a;
     }
     body{
       display: flex;
@@ -30,6 +30,9 @@ export const GlobalStyles = createGlobalStyle`
       align-items: center;
       margin: 0;
       padding: 0;
+      @supports (-webkit-touch-callout: none) {
+        min-height: -webkit-fill-available;
+        }
       p{
             margin: 0;
             padding: 0;
@@ -62,6 +65,4 @@ export const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding: 0;
     }
-   
-
 `;
