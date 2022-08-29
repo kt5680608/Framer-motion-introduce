@@ -1,28 +1,23 @@
-import { Suspense, useRef } from "react";
+import { Suspense, useRef, useState } from 'react';
 import {
     MainContainer,
     MainHeading,
     ExampleContainer,
     IntroduceParagraph,
     IntroduceContainer,
-} from "../section-styles";
-import { Box } from "hoondesign";
-import { useMediaQuery } from "react-responsive";
-import { Canvas } from "react-three-fiber";
-import { motion } from "framer-motion-3d";
-import {
-    useMotionValue,
-    useSpring,
-    useTransform,
-    MotionConfig,
-} from "framer-motion";
-import { useGLTF } from "@react-three/drei";
+} from '../section-styles';
+import { Box } from 'hoondesign';
+import { useMediaQuery } from 'react-responsive';
+import { Canvas } from 'react-three-fiber';
+import { motion } from 'framer-motion-3d';
+import { useMotionValue, useSpring, useTransform, MotionConfig } from 'framer-motion';
+import { useGLTF } from '@react-three/drei';
 
 const spring = { stiffness: 600, damping: 30 };
 
 function IntroduceThreeSection() {
     // model load
-    const gltf = useGLTF("/thinking_emoji/scene.gltf", true);
+    const gltf = useGLTF('/thinking_emoji/scene.gltf', true);
 
     // ExampleContainer width height
     const exampleContainerRef = useRef<HTMLDivElement>(null);
@@ -34,19 +29,35 @@ function IntroduceThreeSection() {
     const mouseRotation = (v: number) => (1 * v) / 2000;
     const mouseRotationY = (v: number) => (1 * v) / 1000;
     const mouseRotateX = useSpring(useTransform(mouseX, mouseRotation), spring);
-    const mouseRotateY = useSpring(
-        useTransform(mouseY, mouseRotationY),
-        spring
-    );
+    const mouseRotateY = useSpring(useTransform(mouseY, mouseRotationY), spring);
+
+    const [mousePointerX, setMousePointerX] = useState(0);
+    const [mousePointerY, setMousePointerY] = useState(0);
+
+    const [deviceBeta, setDeviceBeta] = useState(0);
+    const [deviceAlpha, setDeviceAlpha] = useState(0);
+
     const Model = () => {
         return <motion.primitive object={gltf.scene} dispose={null} />;
     };
+
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener(
+            'deviceorientation',
+            function (event) {
+                console.log(event.beta);
+            },
+            true,
+        );
+    }
     const isPc = useMediaQuery({
-        query: "(min-width:1024px)",
+        query: '(min-width:1024px)',
     });
     return (
         <MainContainer isPc={isPc}>
             <>
+                <h1 style={{ color: 'white' }}>{deviceBeta}</h1>
+                <h1 style={{ color: 'white' }}>{deviceAlpha}</h1>
                 <Box id="introduce-animate-heading-container">
                     <MainHeading size="4rem">5. Three</MainHeading>
                 </Box>
@@ -71,18 +82,45 @@ function IntroduceThreeSection() {
                             width="80vw"
                             onPointerMove={(e) => {
                                 if (exampleContainerRef.current !== null) {
-                                    mouseX.set(
-                                        exampleContainerRef.current
-                                            .offsetWidth /
-                                            -2 +
-                                            e.nativeEvent.offsetX
-                                    );
-                                    mouseY.set(
-                                        exampleContainerRef.current
-                                            .offsetHeight /
-                                            -2 +
-                                            e.nativeEvent.offsetY * 1.2
-                                    );
+                                    if (window!.DeviceOrientationEvent) {
+                                        mouseX.set(
+                                            (e.nativeEvent.offsetX / exampleContainerRef.current.offsetWidth) * 2 - 1,
+                                        );
+                                        mouseY.set(
+                                            exampleContainerRef.current.offsetHeight / -2 + e.nativeEvent.offsetY * 1.2,
+                                        );
+                                        setMousePointerX(
+                                            (e.nativeEvent.offsetX / exampleContainerRef.current.offsetWidth) * 2 - 1,
+                                        );
+                                        setMousePointerY(
+                                            (e.nativeEvent.offsetY / exampleContainerRef.current.offsetHeight) * -2 + 1,
+                                        );
+                                    } else {
+                                        window.addEventListener(
+                                            'deviceorientation',
+                                            function (event) {
+                                                if (event.beta) {
+                                                    setDeviceBeta(event.beta);
+                                                }
+                                                if (event.alpha) {
+                                                    setDeviceAlpha(event.alpha);
+                                                }
+                                            },
+                                            true,
+                                        );
+                                        mouseX.set(
+                                            (e.nativeEvent.offsetX / exampleContainerRef.current.offsetWidth) * 2 - 1,
+                                        );
+                                        mouseY.set(
+                                            exampleContainerRef.current.offsetHeight / -2 + e.nativeEvent.offsetY * 1.2,
+                                        );
+                                        setMousePointerX(
+                                            (e.nativeEvent.offsetX / exampleContainerRef.current.offsetWidth) * 2 - 1,
+                                        );
+                                        setMousePointerY(
+                                            (e.nativeEvent.offsetY / exampleContainerRef.current.offsetHeight) * -2 + 1,
+                                        );
+                                    }
                                 }
                             }}
                         >
@@ -90,17 +128,18 @@ function IntroduceThreeSection() {
                                 <Suspense>
                                     <MotionConfig
                                         transition={{
-                                            type: "spring",
+                                            type: 'spring',
                                             duration: 0.7,
                                             bounce: 0.2,
                                         }}
                                     />
+
                                     <motion.group
-                                        rotation={[
-                                            mouseRotateY,
-                                            mouseRotateX,
-                                            0,
-                                        ]}
+                                        animate={{
+                                            x: mousePointerX / 2,
+                                            y: mousePointerY / 2,
+                                        }}
+                                        rotation={[mouseRotateY, mouseRotateX, 0]}
                                         whileHover={{
                                             scale: 1.1,
                                         }}
@@ -122,10 +161,8 @@ function IntroduceThreeSection() {
                         alignItems="center"
                     >
                         <IntroduceParagraph>
-                            Framer Motion 3D is a simple yet powerful animation
-                            library for React Three Fiber. It offers most of the
-                            same functionality as Framer Motion for declarative
-                            3D scenes.
+                            Framer Motion 3D is a simple yet powerful animation library for React Three Fiber. It offers
+                            most of the same functionality as Framer Motion for declarative 3D scenes.
                         </IntroduceParagraph>
                     </Box>
                 </IntroduceContainer>
@@ -139,16 +176,8 @@ export default IntroduceThreeSection;
 export function Lights() {
     return (
         <>
-            <spotLight
-                color="#61dafb"
-                position={[-10, -10, -10]}
-                intensity={0.2}
-            />
-            <spotLight
-                color="#61dafb"
-                position={[-10, 0, 15]}
-                intensity={0.8}
-            />
+            <spotLight color="#61dafb" position={[-10, -10, -10]} intensity={0.2} />
+            <spotLight color="#61dafb" position={[-10, 0, 15]} intensity={0.8} />
             <spotLight color="#61dafb" position={[-5, 20, 2]} intensity={2} />
             <spotLight color="#f2056f" position={[15, 10, -2]} intensity={2} />
             <spotLight color="#f2056f" position={[15, 10, 5]} intensity={1} />
