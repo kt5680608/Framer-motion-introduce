@@ -1,4 +1,4 @@
-import { Suspense, useRef, useState } from 'react';
+import { Suspense, useRef, useState, useEffect } from 'react';
 import {
     MainContainer,
     MainHeading,
@@ -37,27 +37,41 @@ function IntroduceThreeSection() {
     const [deviceBeta, setDeviceBeta] = useState(0);
     const [deviceAlpha, setDeviceAlpha] = useState(0);
 
+    const [gyroscopeActivate, setGyroscopeActivate] = useState(false);
+
     const Model = () => {
         return <motion.primitive object={gltf.scene} dispose={null} />;
     };
 
-    if (window.DeviceOrientationEvent) {
-        window.addEventListener(
-            'deviceorientation',
-            function (event) {
-                console.log(event.beta);
-            },
-            true,
-        );
-    }
     const isPc = useMediaQuery({
         query: '(min-width:1024px)',
     });
+    useEffect(() => {
+        if (window.DeviceOrientationEvent) {
+            setGyroscopeActivate(true);
+            window.addEventListener(
+                'deviceorientation',
+                function (event) {
+                    if (event.beta) {
+                        setDeviceBeta(event.beta);
+                        console.log(event.beta);
+                    }
+                    if (event.alpha) {
+                        setDeviceAlpha(event.alpha);
+                    }
+                },
+                true,
+            );
+        }
+        console.log('gyroscop activated');
+    }, [deviceBeta, deviceAlpha]);
     return (
         <MainContainer isPc={isPc}>
             <>
                 <h1 style={{ color: 'white' }}>{deviceBeta}</h1>
                 <h1 style={{ color: 'white' }}>{deviceAlpha}</h1>
+                {gyroscopeActivate && <h1 style={{ color: 'white' }}>true</h1>}
+
                 <Box id="introduce-animate-heading-container">
                     <MainHeading size="4rem">5. Three</MainHeading>
                 </Box>
@@ -96,18 +110,6 @@ function IntroduceThreeSection() {
                                             (e.nativeEvent.offsetY / exampleContainerRef.current.offsetHeight) * -2 + 1,
                                         );
                                     } else {
-                                        window.addEventListener(
-                                            'deviceorientation',
-                                            function (event) {
-                                                if (event.beta) {
-                                                    setDeviceBeta(event.beta);
-                                                }
-                                                if (event.alpha) {
-                                                    setDeviceAlpha(event.alpha);
-                                                }
-                                            },
-                                            true,
-                                        );
                                         mouseX.set(
                                             (e.nativeEvent.offsetX / exampleContainerRef.current.offsetWidth) * 2 - 1,
                                         );
