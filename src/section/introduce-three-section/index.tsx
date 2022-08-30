@@ -47,8 +47,7 @@ function IntroduceThreeSection() {
         query: '(min-width:1024px)',
     });
 
-    async function handleCustomOrientation(event: DeviceOrientationEvent) {
-        await (DeviceOrientationEvent as any).requestPermission();
+    function handleCustomOrientation(event: DeviceOrientationEvent) {
         if (event.beta) {
             setDeviceBeta(event.beta);
         }
@@ -59,6 +58,7 @@ function IntroduceThreeSection() {
 
     useEffect(() => {
         if (window.DeviceOrientationEvent) {
+            (DeviceOrientationEvent as any).requestPermission();
             window.addEventListener('deviceorientation', handleCustomOrientation, false);
             console.log('active your gyroscope');
         } else {
