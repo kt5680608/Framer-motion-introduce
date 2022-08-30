@@ -45,7 +45,13 @@ function IntroduceThreeSection() {
         query: '(min-width:1024px)',
     });
 
-    function handleCustomOrientation(event: DeviceOrientationEvent) {
+    interface DeviceOrientationEventiOS extends DeviceOrientationEvent {
+        requestPermission?: () => Promise<'granted' | 'denied'>;
+    }
+
+    const requestPermission = (DeviceOrientationEvent as unknown as DeviceOrientationEventiOS).requestPermission;
+
+    async function handleCustomOrientation(event: DeviceOrientationEventiOS) {
         if (event.beta) {
             setDeviceBeta(event.beta);
         }
@@ -53,11 +59,21 @@ function IntroduceThreeSection() {
             setDeviceAlpha(event.alpha);
         }
     }
-
+    const checkiOS = async () => {
+        const iOS = typeof requestPermission === 'function';
+        if (iOS) {
+            const response = await requestPermission();
+            console.log(response);
+            if (response === 'granted') {
+                window.addEventListener('deviceorientation', handleCustomOrientation, false);
+            }
+        } else {
+            window.addEventListener('deviceorientation', handleCustomOrientation, false);
+        }
+    };
     useEffect(() => {
         if (window.DeviceOrientationEvent) {
-            (DeviceOrientationEvent as any).requestPermission();
-            window.addEventListener('deviceorientation', handleCustomOrientation, false);
+            checkiOS();
             console.log('active your gyroscope');
         } else {
             console.log('sry, your browser suck');
