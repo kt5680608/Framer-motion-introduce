@@ -59,13 +59,20 @@ function IntroduceThreeSection() {
             const response = await requestPermission();
             if (response === 'granted') {
                 setGyroscopeActivate(true);
+                if (event.beta) {
+                    setDeviceBeta(event.beta);
+                }
+                if (event.alpha) {
+                    setDeviceAlpha(event.alpha);
+                }
             }
-        }
-        if (event.beta) {
-            setDeviceBeta(event.beta);
-        }
-        if (event.alpha) {
-            setDeviceAlpha(event.alpha);
+        } else {
+            if (event.beta) {
+                setDeviceBeta(event.beta);
+            }
+            if (event.alpha) {
+                setDeviceAlpha(event.alpha);
+            }
         }
     }
 
