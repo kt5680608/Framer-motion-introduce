@@ -46,26 +46,36 @@ function IntroduceThreeSection() {
     const isPc = useMediaQuery({
         query: '(min-width:1024px)',
     });
-    useEffect(() => {
-        window.dispatchEvent(new Event('orientationchange'));
-        if (window.DeviceOrientationEvent) {
-            setGyroscopeActivate(true);
 
-            window.addEventListener(
-                'deviceorientation',
-                function (event) {
-                    if (event.beta) {
-                        setDeviceBeta(event.beta);
-                        console.log(event.beta);
-                    }
-                    if (event.alpha) {
-                        setDeviceAlpha(event.alpha);
-                    }
-                },
-                true,
-            );
+    interface DeviceOrientationEventiOS extends DeviceOrientationEvent {
+        requestPermission?: () => Promise<'granted' | 'denied'>;
+    }
+
+    const requestPermission = (DeviceOrientationEvent as unknown as DeviceOrientationEventiOS).requestPermission;
+
+    async function handleCustomOrientation(event: DeviceOrientationEvent) {
+        const iOS = typeof requestPermission === 'function';
+        if (iOS) {
+            const response = await requestPermission();
+            if (response === 'granted') {
+                setGyroscopeActivate(true);
+            }
         }
-        console.log('gyroscop activated');
+        if (event.beta) {
+            setDeviceBeta(event.beta);
+        }
+        if (event.alpha) {
+            setDeviceAlpha(event.alpha);
+        }
+    }
+
+    useEffect(() => {
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', handleCustomOrientation, false);
+            console.log('active your gyroscope');
+        } else {
+            console.log('sry, your browser suck');
+        }
     }, [deviceBeta, deviceAlpha]);
     return (
         <MainContainer isPc={isPc}>
