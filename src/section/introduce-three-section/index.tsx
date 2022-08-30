@@ -47,8 +47,10 @@ function IntroduceThreeSection() {
         query: '(min-width:1024px)',
     });
     useEffect(() => {
+        window.dispatchEvent(new Event('orientationchange'));
         if (window.DeviceOrientationEvent) {
             setGyroscopeActivate(true);
+
             window.addEventListener(
                 'deviceorientation',
                 function (event) {
