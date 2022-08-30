@@ -49,36 +49,36 @@ function IntroduceThreeSection() {
         requestPermission?: () => Promise<'granted' | 'denied'>;
     }
 
-    const requestPermission = (DeviceOrientationEvent as unknown as DeviceOrientationEventiOS).requestPermission;
+    useEffect(() => {
+        const requestPermission = (DeviceOrientationEvent as unknown as DeviceOrientationEventiOS).requestPermission;
 
-    async function handleCustomOrientation(event: DeviceOrientationEventiOS) {
-        if (event.beta) {
-            setDeviceBeta(event.beta);
+        function handleCustomOrientation(event: DeviceOrientationEventiOS) {
+            if (event.beta) {
+                setDeviceBeta(event.beta);
+            }
+            if (event.alpha) {
+                setDeviceAlpha(event.alpha);
+            }
         }
-        if (event.alpha) {
-            setDeviceAlpha(event.alpha);
-        }
-    }
-    const checkiOS = async () => {
-        const iOS = typeof requestPermission === 'function';
-        if (iOS) {
-            const response = await requestPermission();
-            console.log(response);
-            if (response === 'granted') {
+
+        const checkiOS = async () => {
+            const iOS = typeof requestPermission === 'function';
+            if (iOS) {
+                const response = await requestPermission();
+                if (response === 'granted') {
+                    window.addEventListener('deviceorientation', handleCustomOrientation, false);
+                }
+            } else {
                 window.addEventListener('deviceorientation', handleCustomOrientation, false);
             }
-        } else {
-            window.addEventListener('deviceorientation', handleCustomOrientation, false);
-        }
-    };
-    useEffect(() => {
+        };
         if (window.DeviceOrientationEvent) {
             checkiOS();
             console.log('active your gyroscope');
         } else {
             console.log('sry, your browser suck');
         }
-    }, [deviceBeta, deviceAlpha]);
+    }, []);
     return (
         <MainContainer isPc={isPc}>
             <>
