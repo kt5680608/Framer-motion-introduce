@@ -1,4 +1,4 @@
-import { Suspense, useRef, useState } from 'react';
+import { Suspense, useRef, useState, useEffect } from 'react';
 import {
     MainContainer,
     MainHeading,
@@ -26,6 +26,7 @@ function IntroduceThreeSection() {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
+    // object rotate value
     const mouseRotation = (v: number) => (1 * v) / 2000;
     const mouseRotationY = (v: number) => (1 * v) / 1000;
     const mouseRotateX = useSpring(useTransform(mouseX, mouseRotation), spring);
@@ -34,31 +35,37 @@ function IntroduceThreeSection() {
     const [mousePointerX, setMousePointerX] = useState(0);
     const [mousePointerY, setMousePointerY] = useState(0);
 
-    const [deviceBeta, setDeviceBeta] = useState(0);
+    // orientation value
     const [deviceAlpha, setDeviceAlpha] = useState(0);
 
-    const [gyroscopeActivate, setGyroscopeActivate] = useState(false);
+    const [deviceType, setDeviceType] = useState<'desktop' | 'tablet' | 'mobile'>();
 
+    // 3D moel load
     const Model = () => {
         return <motion.primitive object={gltf.scene} dispose={null} />;
     };
 
+    // define PC size
     const isPc = useMediaQuery({
         query: '(min-width:1024px)',
     });
 
+    // customization DeviceOrientationEvnet.requestPermission
     interface DeviceOrientationEventiOS extends DeviceOrientationEvent {
         requestPermission?: () => Promise<'granted' | 'denied'>;
     }
 
     const requestPermission = (DeviceOrientationEvent as unknown as DeviceOrientationEventiOS).requestPermission;
 
+    // change orientation value
     function handleCustomOrientation(event: DeviceOrientationEventiOS) {
-        if (event.beta) {
-            setDeviceBeta(event.beta);
+        if (event.beta && event.beta !== mousePointerY) {
+            if (Number((event.beta / 100).toFixed(2)) !== mousePointerY) {
+                setMousePointerY(Number((event.beta / 25).toFixed(2)) - 1.8);
+            }
         }
         if (event.alpha) {
-            setDeviceAlpha(event.alpha);
+            setDeviceAlpha(Math.floor(event.alpha));
         }
     }
     const checkiOS = async () => {
@@ -67,7 +74,6 @@ function IntroduceThreeSection() {
             const response = await requestPermission();
             if (response === 'granted') {
                 window.addEventListener('deviceorientation', handleCustomOrientation, false);
-                setGyroscopeActivate(true);
             }
         } else {
             console.log('not ios');
@@ -76,10 +82,30 @@ function IntroduceThreeSection() {
 
     window.addEventListener('deviceorientation', handleCustomOrientation, false);
 
+    const checkDeviceType = () => {
+        const ua = navigator.userAgent;
+        console.log(ua);
+        if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+            return 'tablet';
+        } else if (
+            /Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+                ua,
+            )
+        ) {
+            return 'mobile';
+        }
+        return 'desktop';
+    };
+
+    useEffect(() => {
+        const response = checkDeviceType();
+        setDeviceType(response);
+    }, []);
+
     return (
         <MainContainer isPc={isPc}>
             <>
-                <h1 style={{ color: 'white' }}>{deviceBeta}</h1>
+                <h1 style={{ color: 'white' }}>{mousePointerY}</h1>
                 <h1 style={{ color: 'white' }}>{deviceAlpha}</h1>
                 <button
                     onClick={() => {
@@ -88,7 +114,6 @@ function IntroduceThreeSection() {
                 >
                     clcik
                 </button>
-                {gyroscopeActivate && <h1>true</h1>}
                 <Box id="introduce-animate-heading-container">
                     <MainHeading size="4rem">5. Three</MainHeading>
                 </Box>
@@ -113,20 +138,7 @@ function IntroduceThreeSection() {
                             width="80vw"
                             onPointerMove={(e) => {
                                 if (exampleContainerRef.current !== null) {
-                                    if (window!.DeviceOrientationEvent) {
-                                        mouseX.set(
-                                            (e.nativeEvent.offsetX / exampleContainerRef.current.offsetWidth) * 2 - 1,
-                                        );
-                                        mouseY.set(
-                                            exampleContainerRef.current.offsetHeight / -2 + e.nativeEvent.offsetY * 1.2,
-                                        );
-                                        setMousePointerX(
-                                            (e.nativeEvent.offsetX / exampleContainerRef.current.offsetWidth) * 2 - 1,
-                                        );
-                                        setMousePointerY(
-                                            (e.nativeEvent.offsetY / exampleContainerRef.current.offsetHeight) * -2 + 1,
-                                        );
-                                    } else {
+                                    if (deviceType === 'desktop') {
                                         mouseX.set(
                                             (e.nativeEvent.offsetX / exampleContainerRef.current.offsetWidth) * 2 - 1,
                                         );
