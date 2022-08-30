@@ -37,8 +37,6 @@ function IntroduceThreeSection() {
     const [deviceBeta, setDeviceBeta] = useState(0);
     const [deviceAlpha, setDeviceAlpha] = useState(0);
 
-    const [gyroscopeActivate, setGyroscopeActivate] = useState(false);
-
     const Model = () => {
         return <motion.primitive object={gltf.scene} dispose={null} />;
     };
