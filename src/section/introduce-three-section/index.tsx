@@ -1,4 +1,4 @@
-import { Suspense, useRef, useState, useEffect } from 'react';
+import { Suspense, useRef, useState } from 'react';
 import {
     MainContainer,
     MainHeading,
@@ -37,6 +37,8 @@ function IntroduceThreeSection() {
     const [deviceBeta, setDeviceBeta] = useState(0);
     const [deviceAlpha, setDeviceAlpha] = useState(0);
 
+    const [gyroscopeActivate, setGyroscopeActivate] = useState(false);
+
     const Model = () => {
         return <motion.primitive object={gltf.scene} dispose={null} />;
     };
@@ -49,42 +51,44 @@ function IntroduceThreeSection() {
         requestPermission?: () => Promise<'granted' | 'denied'>;
     }
 
-    useEffect(() => {
-        const requestPermission = (DeviceOrientationEvent as unknown as DeviceOrientationEventiOS).requestPermission;
+    const requestPermission = (DeviceOrientationEvent as unknown as DeviceOrientationEventiOS).requestPermission;
 
-        function handleCustomOrientation(event: DeviceOrientationEventiOS) {
-            if (event.beta) {
-                setDeviceBeta(event.beta);
-            }
-            if (event.alpha) {
-                setDeviceAlpha(event.alpha);
-            }
+    function handleCustomOrientation(event: DeviceOrientationEventiOS) {
+        if (event.beta) {
+            setDeviceBeta(event.beta);
         }
-
-        const checkiOS = async () => {
-            const iOS = typeof requestPermission === 'function';
-            if (iOS) {
-                const response = await requestPermission();
-                if (response === 'granted') {
-                    window.addEventListener('deviceorientation', handleCustomOrientation, false);
-                }
-            } else {
+        if (event.alpha) {
+            setDeviceAlpha(event.alpha);
+        }
+    }
+    const checkiOS = async () => {
+        const iOS = typeof requestPermission === 'function';
+        if (iOS) {
+            const response = await requestPermission();
+            if (response === 'granted') {
                 window.addEventListener('deviceorientation', handleCustomOrientation, false);
+                setGyroscopeActivate(true);
             }
-        };
-        if (window.DeviceOrientationEvent) {
-            checkiOS();
-            console.log('active your gyroscope');
         } else {
-            console.log('sry, your browser suck');
+            console.log('not ios');
         }
-    }, []);
+    };
+
+    window.addEventListener('deviceorientation', handleCustomOrientation, false);
+
     return (
         <MainContainer isPc={isPc}>
             <>
                 <h1 style={{ color: 'white' }}>{deviceBeta}</h1>
                 <h1 style={{ color: 'white' }}>{deviceAlpha}</h1>
-
+                <button
+                    onClick={() => {
+                        checkiOS();
+                    }}
+                >
+                    clcik
+                </button>
+                {gyroscopeActivate && <h1>true</h1>}
                 <Box id="introduce-animate-heading-container">
                     <MainHeading size="4rem">5. Three</MainHeading>
                 </Box>
