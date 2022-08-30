@@ -47,32 +47,13 @@ function IntroduceThreeSection() {
         query: '(min-width:1024px)',
     });
 
-    interface DeviceOrientationEventiOS extends DeviceOrientationEvent {
-        requestPermission?: () => Promise<'granted' | 'denied'>;
-    }
-
-    const requestPermission = (DeviceOrientationEvent as unknown as DeviceOrientationEventiOS).requestPermission;
-
     async function handleCustomOrientation(event: DeviceOrientationEvent) {
-        const iOS = typeof requestPermission === 'function';
-        if (iOS) {
-            const response = await requestPermission();
-            if (response === 'granted') {
-                setGyroscopeActivate(true);
-                if (event.beta) {
-                    setDeviceBeta(event.beta);
-                }
-                if (event.alpha) {
-                    setDeviceAlpha(event.alpha);
-                }
-            }
-        } else {
-            if (event.beta) {
-                setDeviceBeta(event.beta);
-            }
-            if (event.alpha) {
-                setDeviceAlpha(event.alpha);
-            }
+        await (DeviceOrientationEvent as any).requestPermission();
+        if (event.beta) {
+            setDeviceBeta(event.beta);
+        }
+        if (event.alpha) {
+            setDeviceAlpha(event.alpha);
         }
     }
 
@@ -89,7 +70,6 @@ function IntroduceThreeSection() {
             <>
                 <h1 style={{ color: 'white' }}>{deviceBeta}</h1>
                 <h1 style={{ color: 'white' }}>{deviceAlpha}</h1>
-                {gyroscopeActivate && <h1 style={{ color: 'white' }}>true</h1>}
 
                 <Box id="introduce-animate-heading-container">
                     <MainHeading size="4rem">5. Three</MainHeading>
