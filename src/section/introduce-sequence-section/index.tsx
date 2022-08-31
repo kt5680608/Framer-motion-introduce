@@ -6,8 +6,8 @@ import {
     MainContainer,
     MainHeading,
     ExampleContainer,
-    IntroduceParagraph,
     IntroduceContainer,
+    IntroduceParagraph,
 } from '../section-styles';
 import { motion } from 'framer-motion';
 import { GlassButton } from './style';

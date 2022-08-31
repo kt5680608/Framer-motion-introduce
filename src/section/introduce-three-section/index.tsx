@@ -3,9 +3,10 @@ import {
     MainContainer,
     MainHeading,
     ExampleContainer,
-    IntroduceParagraph,
     IntroduceContainer,
+    IntroduceParagraph,
 } from '../section-styles';
+import { GlassButton, IconSpan, ButtonFrame } from './style';
 import { Box } from 'hoondesign';
 import { useMediaQuery } from 'react-responsive';
 import { Canvas } from 'react-three-fiber';
@@ -62,12 +63,12 @@ function IntroduceThreeSection() {
             if (
                 event.beta &&
                 event.gamma &&
-                Number((event.beta / 100).toFixed(2)) !== currentViewPositionY &&
+                Number((event.beta / 15 - 1.8).toFixed(2)) !== currentViewPositionY &&
                 Number((event.gamma / 30).toFixed(2)) !== currentViewPositionX &&
                 deviceType !== 'desktop'
             ) {
-                setcurrentViewPositionY(Number((event.beta / 15).toFixed(2)) - 1.8);
-                setcurrentViewPositionX(Number(event.gamma.toFixed(2)) / 15);
+                setcurrentViewPositionY(Number((event.beta / 15 - 1.8).toFixed(2)));
+                setcurrentViewPositionX(Number((event.gamma / 15).toFixed(2)));
                 currentRotationValueY.set(Number((event.beta / 300).toFixed(2)));
                 currentRotationValueX.set(Number((event.gamma / 300).toFixed(2)));
             }
@@ -111,8 +112,6 @@ function IntroduceThreeSection() {
     return (
         <MainContainer isPc={isPc}>
             <>
-                <h1 style={{ color: 'white' }}>{currentViewPositionY}</h1>
-                <h1 style={{ color: 'white' }}>{currentViewPositionX}</h1>
                 <button
                     onClick={() => {
                         checkiOS();
@@ -161,6 +160,11 @@ function IntroduceThreeSection() {
                                 }
                             }}
                         >
+                            <ButtonFrame>
+                                <GlassButton whileHover={{ scale: 1.1 }}>
+                                    <IconSpan>ios</IconSpan>
+                                </GlassButton>
+                            </ButtonFrame>
                             <Canvas>
                                 <Suspense>
                                     <MotionConfig
@@ -200,6 +204,14 @@ function IntroduceThreeSection() {
                         <IntroduceParagraph>
                             Framer Motion 3D is a simple yet powerful animation library for React Three Fiber. It offers
                             most of the same functionality as Framer Motion for declarative 3D scenes.
+                            <br />
+                            <br />
+                            This 3d interaction works through the user's mouse position in the computer environment. On
+                            the other hand, in a mobile environment, it works by tilting the device's gyro sensor.
+                            <br />
+                            <br />
+                            If you are in an iOS environment such as iphone, click the upper right button to activate
+                            the sensor.
                         </IntroduceParagraph>
                     </Box>
                 </IntroduceContainer>

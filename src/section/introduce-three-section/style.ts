@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { motion } from "framer-motion";
-import { StyledP } from "../section-styles";
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { StyledP } from '../section-styles';
 
 export const GlassButton = styled(motion.button)`
     background: rgba(255, 255, 255, 0.1);
@@ -12,9 +12,9 @@ export const GlassButton = styled(motion.button)`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 120px;
-    height: 60px;
-    position: absolute;
+    width: 30px;
+    height: 30px;
+
     cursor: pointer;
     z-index: 1;
 `;
@@ -55,4 +55,21 @@ export const RangeInput = styled.input`
         height: 30%;
         background-color: #707070;
     }
+`;
+
+export const IconSpan = styled.span`
+    font-family: RFLEXREGULAR;
+    white-space: pre-wrap;
+    font-size: 1rem;
+    color: white;
+    line-height: 2rem;
+`;
+
+export const ButtonFrame = styled.div`
+    width: 94%;
+    height: 88%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    position: absolute;
 `;
