@@ -31,7 +31,6 @@ function IntroduceThreeSection() {
     const mouseRotationY = (v: number) => (1 * v) / 1000;
     const mouseRotateX = useSpring(useTransform(mouseX, mouseRotation), spring);
     const mouseRotateY = useSpring(useTransform(mouseY, mouseRotationY), spring);
-
     const [mousePointerX, setMousePointerX] = useState(0);
     const [mousePointerY, setMousePointerY] = useState(0);
 
@@ -60,15 +59,15 @@ function IntroduceThreeSection() {
     function handleCustomOrientation(event: DeviceOrientationEventiOS) {
         if (
             event.beta &&
-            event.alpha &&
+            event.gamma &&
             Number((event.beta / 100).toFixed(2)) !== mousePointerY &&
-            Number((event.alpha / 100).toFixed(2)) !== mousePointerX &&
+            Number((event.gamma / 30).toFixed(2)) !== mousePointerX &&
             deviceType !== 'desktop'
         ) {
             setMousePointerY(Number((event.beta / 25).toFixed(2)) - 1.8);
-            setMousePointerX(Number((event.alpha / 22.5).toFixed(2)));
-            mouseX.set(Number((event.alpha / 100).toFixed(2)));
-            mouseY.set(Number((event.alpha / 300).toFixed(2)));
+            setMousePointerX(Number(event.gamma.toFixed(2)) / 60);
+            mouseY.set(Number((event.beta / 300).toFixed(2)));
+            mouseX.set(Number((event.gamma / 300).toFixed(2)));
         }
     }
     const checkiOS = async () => {
@@ -82,8 +81,6 @@ function IntroduceThreeSection() {
             console.log('not ios');
         }
     };
-
-    window.addEventListener('deviceorientation', handleCustomOrientation, false);
 
     const checkDeviceType = () => {
         const ua = navigator.userAgent;
@@ -101,6 +98,7 @@ function IntroduceThreeSection() {
     };
 
     useEffect(() => {
+        window.addEventListener('deviceorientation', handleCustomOrientation, false);
         const response = checkDeviceType();
         setDeviceType(response);
     }, []);
