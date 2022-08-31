@@ -1,4 +1,4 @@
-import { Suspense, useRef, useState, useEffect } from 'react';
+import { Suspense, useRef, useState, useEffect, useCallback } from 'react';
 import {
     MainContainer,
     MainHeading,
@@ -56,20 +56,24 @@ function IntroduceThreeSection() {
     const requestPermission = (DeviceOrientationEvent as unknown as DeviceOrientationEventiOS).requestPermission;
 
     // change orientation value
-    function handleCustomOrientation(event: DeviceOrientationEventiOS) {
-        if (
-            event.beta &&
-            event.gamma &&
-            Number((event.beta / 100).toFixed(2)) !== mousePointerY &&
-            Number((event.gamma / 30).toFixed(2)) !== mousePointerX &&
-            deviceType !== 'desktop'
-        ) {
-            setMousePointerY(Number((event.beta / 25).toFixed(2)) - 1.8);
-            setMousePointerX(Number(event.gamma.toFixed(2)) / 60);
-            mouseY.set(Number((event.beta / 300).toFixed(2)));
-            mouseX.set(Number((event.gamma / 300).toFixed(2)));
-        }
-    }
+    const handleCustomOrientation = useCallback(
+        (event: DeviceOrientationEventiOS) => {
+            if (
+                event.beta &&
+                event.gamma &&
+                Number((event.beta / 100).toFixed(2)) !== mousePointerY &&
+                Number((event.gamma / 30).toFixed(2)) !== mousePointerX &&
+                deviceType !== 'desktop'
+            ) {
+                setMousePointerY(Number((event.beta / 25).toFixed(2)) - 1.8);
+                setMousePointerX(Number(event.gamma.toFixed(2)) / 10);
+                mouseY.set(Number((event.beta / 300).toFixed(2)));
+                mouseX.set(Number((event.gamma / 300).toFixed(2)));
+            }
+        },
+        [deviceType, mousePointerX, mousePointerY, mouseX, mouseY],
+    );
+
     const checkiOS = async () => {
         const iOS = typeof requestPermission === 'function';
         if (iOS) {
@@ -101,7 +105,7 @@ function IntroduceThreeSection() {
         window.addEventListener('deviceorientation', handleCustomOrientation, false);
         const response = checkDeviceType();
         setDeviceType(response);
-    }, []);
+    }, [handleCustomOrientation]);
 
     return (
         <MainContainer isPc={isPc}>
