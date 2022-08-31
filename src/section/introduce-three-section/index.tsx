@@ -22,23 +22,11 @@ function IntroduceThreeSection() {
     // ExampleContainer width height
     const exampleContainerRef = useRef<HTMLDivElement>(null);
 
-    // mapping mouse position
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
+    // mapping currentRotationValue position
+    const currentRotationValueX = useMotionValue(0);
+    const currentRotationValueY = useMotionValue(0);
 
-    // object rotate value
-    const mouseRotation = (v: number) => (1 * v) / 2;
-    const mouseRotationY = (v: number) => (1 * v) / 1000;
-    const mouseRotateX = useSpring(useTransform(mouseX, mouseRotation), spring);
-    const mouseRotateY = useSpring(useTransform(mouseY, mouseRotationY), spring);
-    const [mousePointerX, setMousePointerX] = useState(0);
-    const [mousePointerY, setMousePointerY] = useState(0);
-
-    // orientation value
-
-    const [deviceType, setDeviceType] = useState<'desktop' | 'tablet' | 'mobile'>();
-
-    // 3D moel load
+    // 3D model load
     const Model = () => {
         return <motion.primitive object={gltf.scene} dispose={null} />;
     };
@@ -47,6 +35,19 @@ function IntroduceThreeSection() {
     const isPc = useMediaQuery({
         query: '(min-width:1024px)',
     });
+
+    // object rotate value
+    const currentViewRotation = (v: number) => (1 * v) / 2;
+    const currentViewRotationY = (v: number) => (1 * v) / 1000;
+    const currentRotationValueRotateX = useSpring(useTransform(currentRotationValueX, currentViewRotation), spring);
+    const currentRotationValueRotateY = useSpring(useTransform(currentRotationValueY, currentViewRotationY), spring);
+
+    // user's current view point
+    const [currentViewPositionX, setcurrentViewPositionX] = useState(0);
+    const [currentViewPositionY, setcurrentViewPositionY] = useState(0);
+
+    // user's device
+    const [deviceType, setDeviceType] = useState<'desktop' | 'tablet' | 'mobile'>();
 
     // customization DeviceOrientationEvnet.requestPermission
     interface DeviceOrientationEventiOS extends DeviceOrientationEvent {
@@ -61,17 +62,17 @@ function IntroduceThreeSection() {
             if (
                 event.beta &&
                 event.gamma &&
-                Number((event.beta / 100).toFixed(2)) !== mousePointerY &&
-                Number((event.gamma / 30).toFixed(2)) !== mousePointerX &&
+                Number((event.beta / 100).toFixed(2)) !== currentViewPositionY &&
+                Number((event.gamma / 30).toFixed(2)) !== currentViewPositionX &&
                 deviceType !== 'desktop'
             ) {
-                setMousePointerY(Number((event.beta / 25).toFixed(2)) - 1.8);
-                setMousePointerX(Number(event.gamma.toFixed(2)) / 10);
-                mouseY.set(Number((event.beta / 300).toFixed(2)));
-                mouseX.set(Number((event.gamma / 300).toFixed(2)));
+                setcurrentViewPositionY(Number((event.beta / 15).toFixed(2)) - 1.8);
+                setcurrentViewPositionX(Number(event.gamma.toFixed(2)) / 15);
+                currentRotationValueY.set(Number((event.beta / 300).toFixed(2)));
+                currentRotationValueX.set(Number((event.gamma / 300).toFixed(2)));
             }
         },
-        [deviceType, mousePointerX, mousePointerY, mouseX, mouseY],
+        [deviceType, currentViewPositionX, currentViewPositionY, currentRotationValueX, currentRotationValueY],
     );
 
     const checkiOS = async () => {
@@ -110,8 +111,8 @@ function IntroduceThreeSection() {
     return (
         <MainContainer isPc={isPc}>
             <>
-                <h1 style={{ color: 'white' }}>{mousePointerY}</h1>
-                <h1 style={{ color: 'white' }}>{mousePointerX}</h1>
+                <h1 style={{ color: 'white' }}>{currentViewPositionY}</h1>
+                <h1 style={{ color: 'white' }}>{currentViewPositionX}</h1>
                 <button
                     onClick={() => {
                         checkiOS();
@@ -144,16 +145,16 @@ function IntroduceThreeSection() {
                             onPointerMove={(e) => {
                                 if (exampleContainerRef.current !== null) {
                                     if (deviceType === 'desktop') {
-                                        mouseX.set(
+                                        currentRotationValueX.set(
                                             (e.nativeEvent.offsetX / exampleContainerRef.current.offsetWidth) * 2 - 1,
                                         );
-                                        mouseY.set(
+                                        currentRotationValueY.set(
                                             exampleContainerRef.current.offsetHeight / -2 + e.nativeEvent.offsetY * 1.2,
                                         );
-                                        setMousePointerX(
+                                        setcurrentViewPositionX(
                                             (e.nativeEvent.offsetX / exampleContainerRef.current.offsetWidth) * 2 - 1,
                                         );
-                                        setMousePointerY(
+                                        setcurrentViewPositionY(
                                             (e.nativeEvent.offsetY / exampleContainerRef.current.offsetHeight) * -2 + 1,
                                         );
                                     }
@@ -172,10 +173,10 @@ function IntroduceThreeSection() {
 
                                     <motion.group
                                         animate={{
-                                            x: mousePointerX / 2,
-                                            y: mousePointerY / 2,
+                                            x: currentViewPositionX / 2,
+                                            y: currentViewPositionY / 2,
                                         }}
-                                        rotation={[mouseRotateY, mouseRotateX, 0]}
+                                        rotation={[currentRotationValueRotateY, currentRotationValueRotateX, 0]}
                                         whileHover={{
                                             scale: 1.1,
                                         }}
