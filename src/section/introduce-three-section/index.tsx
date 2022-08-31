@@ -112,13 +112,6 @@ function IntroduceThreeSection() {
     return (
         <MainContainer isPc={isPc}>
             <>
-                <button
-                    onClick={() => {
-                        checkiOS();
-                    }}
-                >
-                    clcik
-                </button>
                 <Box id="introduce-animate-heading-container">
                     <MainHeading size="4rem">5. Three</MainHeading>
                 </Box>
@@ -161,7 +154,12 @@ function IntroduceThreeSection() {
                             }}
                         >
                             <ButtonFrame>
-                                <GlassButton whileHover={{ scale: 1.1 }}>
+                                <GlassButton
+                                    whileHover={{ scale: 1.1 }}
+                                    onClick={() => {
+                                        checkiOS();
+                                    }}
+                                >
                                     <IconSpan>ios</IconSpan>
                                 </GlassButton>
                             </ButtonFrame>
