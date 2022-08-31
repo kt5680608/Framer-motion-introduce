@@ -27,7 +27,7 @@ function IntroduceThreeSection() {
     const mouseY = useMotionValue(0);
 
     // object rotate value
-    const mouseRotation = (v: number) => (1 * v) / 2000;
+    const mouseRotation = (v: number) => (1 * v) / 2;
     const mouseRotationY = (v: number) => (1 * v) / 1000;
     const mouseRotateX = useSpring(useTransform(mouseX, mouseRotation), spring);
     const mouseRotateY = useSpring(useTransform(mouseY, mouseRotationY), spring);
@@ -36,7 +36,6 @@ function IntroduceThreeSection() {
     const [mousePointerY, setMousePointerY] = useState(0);
 
     // orientation value
-    const [deviceAlpha, setDeviceAlpha] = useState(0);
 
     const [deviceType, setDeviceType] = useState<'desktop' | 'tablet' | 'mobile'>();
 
@@ -59,13 +58,17 @@ function IntroduceThreeSection() {
 
     // change orientation value
     function handleCustomOrientation(event: DeviceOrientationEventiOS) {
-        if (event.beta && event.beta !== mousePointerY) {
-            if (Number((event.beta / 100).toFixed(2)) !== mousePointerY) {
-                setMousePointerY(Number((event.beta / 25).toFixed(2)) - 1.8);
-            }
-        }
-        if (event.alpha) {
-            setDeviceAlpha(Math.floor(event.alpha));
+        if (
+            event.beta &&
+            event.alpha &&
+            Number((event.beta / 100).toFixed(2)) !== mousePointerY &&
+            Number((event.alpha / 100).toFixed(2)) !== mousePointerX &&
+            deviceType !== 'desktop'
+        ) {
+            setMousePointerY(Number((event.beta / 25).toFixed(2)) - 1.8);
+            setMousePointerX(Number((event.alpha / 22.5).toFixed(2)));
+            mouseX.set(Number((event.alpha / 100).toFixed(2)));
+            mouseY.set(Number((event.alpha / 300).toFixed(2)));
         }
     }
     const checkiOS = async () => {
@@ -106,7 +109,7 @@ function IntroduceThreeSection() {
         <MainContainer isPc={isPc}>
             <>
                 <h1 style={{ color: 'white' }}>{mousePointerY}</h1>
-                <h1 style={{ color: 'white' }}>{deviceAlpha}</h1>
+                <h1 style={{ color: 'white' }}>{mousePointerX}</h1>
                 <button
                     onClick={() => {
                         checkiOS();
