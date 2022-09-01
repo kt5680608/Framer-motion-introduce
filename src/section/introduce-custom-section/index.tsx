@@ -1,36 +1,23 @@
-import React, { useState, useEffect } from "react";
-import {
-    AnimatedCard,
-    AnimatedCardImage,
-    AnimatedCardParagraph,
-    ButtonBox,
-    ButtonContainer,
-} from "./style";
-import {
-    MainContainer,
-    ExampleContainer,
-    IntroduceParagraph,
-    IntroduceContainer,
-} from "../section-styles";
-import { CgMathMinus, CgMathPlus } from "react-icons/cg";
-import { useMediaQuery } from "react-responsive";
-import { Box } from "hoondesign";
-import { MainHeading } from "../section-styles";
+import React, { useState, useEffect } from 'react';
+import { AnimatedCard, AnimatedCardImage, AnimatedCardParagraph, ButtonBox, ButtonContainer } from './style';
+import { MainContainer, ExampleContainer, IntroduceParagraph, IntroduceContainer } from '../section-styles';
+import { CgMathMinus, CgMathPlus } from 'react-icons/cg';
+import { useMediaQuery } from 'react-responsive';
+import { Box } from 'hoondesign';
+import { MainHeading } from '../section-styles';
 
 function IntroduceCustomSection() {
     const [cards, setCards] = useState([1]);
     const calcSkew = (index: number) => {
         return (
-            Math.log(cards.length / 2 - index / 2) * index -
-            Math.log(cards.length / 2 - index / 2) * cards.length -
-            1
+            Math.log(cards.length / 2 - index / 2) * index - Math.log(cards.length / 2 - index / 2) * cards.length - 1
         );
     };
     const isPc = useMediaQuery({
-        query: "(min-width:1024px)",
+        query: '(min-width:1024px)',
     });
     const isMobile = useMediaQuery({
-        query: "(max-width:435px)",
+        query: '(max-width:435px)',
     });
 
     const onClickPlusBtn = () => {
@@ -43,7 +30,7 @@ function IntroduceCustomSection() {
             setCards((card) =>
                 card.filter((_, index) => {
                     return card.length - 1 !== index;
-                })
+                }),
             );
         }
     };
@@ -53,7 +40,7 @@ function IntroduceCustomSection() {
                 setCards((card) =>
                     card.filter((_, index) => {
                         return card.length - 1 !== index;
-                    })
+                    }),
                 );
             }, 100);
         }
@@ -141,9 +128,7 @@ function IntroduceCustomSection() {
                                                 width="100%"
                                                 height="50%"
                                             >
-                                                <AnimatedCardImage
-                                                    src={"/profile.png"}
-                                                />
+                                                <AnimatedCardImage src={'/profile.png'} />
 
                                                 <Box
                                                     id="animate-box-header-paragraph-container"
@@ -151,9 +136,7 @@ function IntroduceCustomSection() {
                                                     flexDirection="column"
                                                     alignItems="center"
                                                 >
-                                                    <AnimatedCardParagraph fontSize="3vw">
-                                                        hoon
-                                                    </AnimatedCardParagraph>
+                                                    <AnimatedCardParagraph fontSize="3vw">hoon</AnimatedCardParagraph>
                                                     <hr />
                                                     <AnimatedCardParagraph fontSize="1.2vw">
                                                         ux engineer
@@ -169,8 +152,7 @@ function IntroduceCustomSection() {
                                                         justifyContent="center"
                                                     >
                                                         <AnimatedCardParagraph fontSize="1.8vw">
-                                                            Aesthetics of
-                                                            continuity.
+                                                            Aesthetics of continuity.
                                                         </AnimatedCardParagraph>
                                                     </Box>
                                                 </>
@@ -189,13 +171,9 @@ function IntroduceCustomSection() {
                                 alignItems="center"
                             >
                                 <IntroduceParagraph>
-                                    Used with react-hooks, you can add
-                                    customized interactions.
-                                    <br />
-                                    Find various references on YouTube, Dribble,
-                                    and other sites, and move them directly to
-                                    your website. This interaction is inspired
-                                    by Toss App.
+                                    Used with react-hooks, you can add customized interactions. Find various references
+                                    on YouTube, Dribble, and other sites, and move them directly to your website. This
+                                    interaction is inspired by Toss App.
                                 </IntroduceParagraph>
                             </Box>
                         </IntroduceContainer>

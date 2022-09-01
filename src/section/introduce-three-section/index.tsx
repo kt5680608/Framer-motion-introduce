@@ -44,8 +44,8 @@ function IntroduceThreeSection() {
     const currentRotationValueRotateY = useSpring(useTransform(currentRotationValueY, currentViewRotationY), spring);
 
     // user's current view point
-    const [currentViewPositionX, setcurrentViewPositionX] = useState(0);
-    const [currentViewPositionY, setcurrentViewPositionY] = useState(0);
+    const [currentViewPositionX, setCurrentViewPositionX] = useState(0);
+    const [currentViewPositionY, setCurrentViewPositionY] = useState(0);
 
     // user's device
     const [deviceType, setDeviceType] = useState<'desktop' | 'tablet' | 'mobile'>();
@@ -67,8 +67,8 @@ function IntroduceThreeSection() {
                 Number((event.gamma / 30).toFixed(2)) !== currentViewPositionX &&
                 deviceType !== 'desktop'
             ) {
-                setcurrentViewPositionY(Number((event.beta / 15 - 1.8).toFixed(2)));
-                setcurrentViewPositionX(Number((event.gamma / 15).toFixed(2)));
+                setCurrentViewPositionY(Number((event.beta / 15 - 1.8).toFixed(2)));
+                setCurrentViewPositionX(Number((event.gamma / 15).toFixed(2)));
                 currentRotationValueY.set(Number((event.beta / 300).toFixed(2)));
                 currentRotationValueX.set(Number((event.gamma / 300).toFixed(2)));
             }
@@ -143,10 +143,10 @@ function IntroduceThreeSection() {
                                         currentRotationValueY.set(
                                             exampleContainerRef.current.offsetHeight / -2 + e.nativeEvent.offsetY * 1.2,
                                         );
-                                        setcurrentViewPositionX(
+                                        setCurrentViewPositionX(
                                             (e.nativeEvent.offsetX / exampleContainerRef.current.offsetWidth) * 2 - 1,
                                         );
-                                        setcurrentViewPositionY(
+                                        setCurrentViewPositionY(
                                             (e.nativeEvent.offsetY / exampleContainerRef.current.offsetHeight) * -2 + 1,
                                         );
                                     }
@@ -201,15 +201,11 @@ function IntroduceThreeSection() {
                     >
                         <IntroduceParagraph>
                             Framer Motion 3D is a simple yet powerful animation library for React Three Fiber. It offers
-                            most of the same functionality as Framer Motion for declarative 3D scenes.
-                            <br />
-                            <br />
-                            This 3d interaction works through the user's mouse position in the computer environment. On
-                            the other hand, in a mobile environment, it works by tilting the device's gyro sensor.
-                            <br />
-                            <br />
-                            If you are in an iOS environment such as iphone, click the upper right button to activate
-                            the sensor.
+                            most of the same functionality as Framer Motion for declarative 3D scenes. This 3d
+                            interaction works through the user's mouse position in the computer environment. On the
+                            other hand, in a mobile environment, it works by tilting the device's gyro sensor. If you
+                            are in an iOS environment such as iphone, click the upper right button to activate the
+                            sensor.
                         </IntroduceParagraph>
                     </Box>
                 </IntroduceContainer>

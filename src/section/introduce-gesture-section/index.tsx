@@ -1,38 +1,28 @@
-import React, { useRef, useState } from "react";
-import { Box } from "hoondesign";
-import { useMediaQuery } from "react-responsive";
-import {
-    AnimatedBox,
-    ConsoleContainer,
-    CodeParagraph,
-    CodeSpan,
-} from "./style";
+import React, { useRef, useState } from 'react';
+import { Box } from 'hoondesign';
+import { useMediaQuery } from 'react-responsive';
+import { AnimatedBox, ConsoleContainer, CodeParagraph, CodeSpan } from './style';
 import {
     MainContainer,
     MainHeading,
     ExampleContainer,
     IntroduceParagraph,
     IntroduceContainer,
-} from "../section-styles";
-import { IGestureContainerInfoProps } from "../types";
+} from '../section-styles';
+import { IGestureContainerInfoProps } from '../types';
 
 function IntroduceGestureSection() {
     const isPc = useMediaQuery({
-        query: "(min-width:1024px)",
+        query: '(min-width:1024px)',
     });
 
     const constraintsRef = useRef(null);
-    const [gestureInfo, setGestureInfo] = useState<
-        IGestureContainerInfoProps[]
-    >([]);
+    const [gestureInfo, setGestureInfo] = useState<IGestureContainerInfoProps[]>([]);
     const [arrId, setArrId] = useState(0);
 
     const listItems = gestureInfo.map((item, index) => (
         <CodeParagraph key={index}>
-            <CodeSpan color="var(--system-palette-purpleLight)">
-                {item.type}
-            </CodeSpan>
-            , x:{item.x}, y: {item.y}
+            <CodeSpan color="var(--system-palette-purpleLight)">{item.type}</CodeSpan>, x:{item.x}, y: {item.y}
         </CodeParagraph>
     ));
     return (
@@ -64,16 +54,12 @@ function IntroduceGestureSection() {
                             >
                                 <AnimatedBox
                                     onDragStart={() => {
-                                        document.body.classList.add(
-                                            "prevent-scroll"
-                                        );
+                                        document.body.classList.add('prevent-scroll');
                                     }}
                                     onDragEnd={() => {
-                                        document.body.classList.remove(
-                                            "prevent-scroll"
-                                        );
+                                        document.body.classList.remove('prevent-scroll');
                                     }}
-                                    whileDrag={{ borderRadius: "50%" }}
+                                    whileDrag={{ borderRadius: '50%' }}
                                     whileHover={{ scale: 1.1 }}
                                     drag
                                     dragConstraints={constraintsRef}
@@ -81,36 +67,26 @@ function IntroduceGestureSection() {
                                         const value = {
                                             x: Math.floor(info.point.x),
                                             y: Math.floor(info.point.y),
-                                            type: "onDrag",
+                                            type: 'onDrag',
                                             id: arrId,
                                         };
                                         if (
                                             gestureInfo.length === 0 ||
-                                            gestureInfo[gestureInfo.length - 1]
-                                                .x !== value.x ||
-                                            gestureInfo[gestureInfo.length - 1]
-                                                .y !== value.y
+                                            gestureInfo[gestureInfo.length - 1].x !== value.x ||
+                                            gestureInfo[gestureInfo.length - 1].y !== value.y
                                         ) {
-                                            setGestureInfo(
-                                                gestureInfo.concat(value)
-                                            );
+                                            setGestureInfo(gestureInfo.concat(value));
                                             setArrId(arrId + 1);
                                         }
                                     }}
                                     onClick={(event) => {
                                         const value = {
-                                            x: Math.floor(
-                                                event.nativeEvent.pageX
-                                            ),
-                                            y: Math.floor(
-                                                event.nativeEvent.pageY
-                                            ),
-                                            type: "onTap",
+                                            x: Math.floor(event.nativeEvent.pageX),
+                                            y: Math.floor(event.nativeEvent.pageY),
+                                            type: 'onTap',
                                             id: arrId,
                                         };
-                                        setGestureInfo(
-                                            gestureInfo.concat(value)
-                                        );
+                                        setGestureInfo(gestureInfo.concat(value));
                                         setArrId(arrId + 1);
                                     }}
                                     whileTap={{ scale: 0.9 }}
@@ -118,9 +94,7 @@ function IntroduceGestureSection() {
                             </ExampleContainer>
                         </Box>
                         <Box id="introduce-gesture-console-container">
-                            <ConsoleContainer isPc={isPc}>
-                                {listItems}
-                            </ConsoleContainer>
+                            <ConsoleContainer isPc={isPc}>{listItems}</ConsoleContainer>
                         </Box>
                     </Box>
 
@@ -132,16 +106,13 @@ function IntroduceGestureSection() {
                             justifyContent="center"
                             alignItems="center"
                         >
-                            {" "}
+                            {' '}
                             <IntroduceParagraph>
-                                Motion extends the basic set of event listeners
-                                provided by React with simple yet powerful
-                                gesture recognizers.
+                                Motion extends the basic set of event listeners provided by React with simple yet
+                                powerful gesture recognizers.
                                 <br />
-                                It currently has support for hover, tap, pan,
-                                viewport and drag gesture detection. Each
-                                gesture has a series of event listeners that you
-                                can attach to your motion component.
+                                It currently has support for hover, tap, pan, viewport and drag gesture detection. Each
+                                gesture has a series of event listeners that you can attach to your motion component.
                             </IntroduceParagraph>
                         </Box>
                     </IntroduceContainer>
@@ -174,7 +145,7 @@ function IntroduceGestureSection() {
                                 backgroundColor="linear-gradient(135deg, #a2e, #d0e);"
                             >
                                 <AnimatedBox
-                                    whileDrag={{ borderRadius: "50%" }}
+                                    whileDrag={{ borderRadius: '50%' }}
                                     whileHover={{ scale: 1.1 }}
                                     drag
                                     dragConstraints={constraintsRef}
@@ -182,36 +153,26 @@ function IntroduceGestureSection() {
                                         const value = {
                                             x: Math.floor(info.point.x),
                                             y: Math.floor(info.point.y),
-                                            type: "onDrag",
+                                            type: 'onDrag',
                                             id: arrId,
                                         };
                                         if (
                                             gestureInfo.length === 0 ||
-                                            gestureInfo[gestureInfo.length - 1]
-                                                .x !== value.x ||
-                                            gestureInfo[gestureInfo.length - 1]
-                                                .y !== value.y
+                                            gestureInfo[gestureInfo.length - 1].x !== value.x ||
+                                            gestureInfo[gestureInfo.length - 1].y !== value.y
                                         ) {
-                                            setGestureInfo(
-                                                gestureInfo.concat(value)
-                                            );
+                                            setGestureInfo(gestureInfo.concat(value));
                                             setArrId(arrId + 1);
                                         }
                                     }}
                                     onClick={(event) => {
                                         const value = {
-                                            x: Math.floor(
-                                                event.nativeEvent.pageX
-                                            ),
-                                            y: Math.floor(
-                                                event.nativeEvent.pageY
-                                            ),
-                                            type: "onTap",
+                                            x: Math.floor(event.nativeEvent.pageX),
+                                            y: Math.floor(event.nativeEvent.pageY),
+                                            type: 'onTap',
                                             id: arrId,
                                         };
-                                        setGestureInfo(
-                                            gestureInfo.concat(value)
-                                        );
+                                        setGestureInfo(gestureInfo.concat(value));
                                         setArrId(arrId + 1);
                                         console.log(gestureInfo);
                                     }}
@@ -219,25 +180,15 @@ function IntroduceGestureSection() {
                                 />
                             </ExampleContainer>
                             <Box id="introduce-gesture-console-container">
-                                <ConsoleContainer isPc={isPc}>
-                                    {listItems}
-                                </ConsoleContainer>
+                                <ConsoleContainer isPc={isPc}>{listItems}</ConsoleContainer>
                             </Box>
                             <IntroduceContainer isPc={isPc}>
-                                <Box
-                                    id="introduce-variants-paragraph-container"
-                                    width="90%"
-                                >
+                                <Box id="introduce-variants-paragraph-container" width="90%">
                                     <IntroduceParagraph>
-                                        Motion extends the basic set of event
-                                        listeners provided by React with simple
-                                        yet powerful gesture recognizers.
-                                        <br />
-                                        It currently has support for hover, tap,
-                                        pan, viewport and drag gesture
-                                        detection. Each gesture has a series of
-                                        event listeners that you can attach to
-                                        your motion component.
+                                        Motion extends the basic set of event listeners provided by React with simple
+                                        yet powerful gesture recognizers. It currently has support for hover, tap, pan,
+                                        viewport and drag gesture detection. Each gesture has a series of event
+                                        listeners that you can attach to your motion component.
                                     </IntroduceParagraph>
                                 </Box>
                             </IntroduceContainer>

@@ -108,10 +108,8 @@ function IntroduceSequenceSection() {
                     >
                         <IntroduceParagraph>
                             Declarative animations are ideal for most UI interactions. But sometimes we need to
-                            orchestrate more complex sequences.
-                            <br />
-                            The useAnimationControls hook can be used to manually start/stop animations, and compose
-                            them together.
+                            orchestrate more complex sequences. The useAnimationControls hook can be used to manually
+                            start/stop animations, and compose them together.
                         </IntroduceParagraph>
                     </Box>
                 </IntroduceContainer>
