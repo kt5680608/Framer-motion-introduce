@@ -67,7 +67,7 @@ function IntroduceThreeSection() {
                 Number((event.gamma / 30).toFixed(2)) !== currentViewPositionX &&
                 deviceType !== 'desktop'
             ) {
-                setCurrentViewPositionY(Number((event.beta / 15 - 1.8).toFixed(2)));
+                setCurrentViewPositionY(Number(-(event.beta / 15 - 1.8).toFixed(2)));
                 setCurrentViewPositionX(Number((event.gamma / 15).toFixed(2)));
                 currentRotationValueY.set(Number((event.beta / 300).toFixed(2)));
                 currentRotationValueX.set(Number((event.gamma / 300).toFixed(2)));
