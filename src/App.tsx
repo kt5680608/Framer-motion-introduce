@@ -7,6 +7,7 @@ import {
     SequenceSection,
     ThreeSection,
     CustomSection,
+    CustomSection2,
     ContactSection,
     LoadingSection,
 } from './section';
@@ -33,6 +34,7 @@ function App() {
                     <SequenceSection />
                     <ThreeSection />
                     <CustomSection />
+                    <CustomSection2 />
                     <ContactSection />
                 </>
             )}

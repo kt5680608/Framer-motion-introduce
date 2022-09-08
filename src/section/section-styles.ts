@@ -1,10 +1,5 @@
-import styled from "styled-components";
-import { motion } from "framer-motion";
-import {
-    IDeviceProps,
-    IExampleContainerProps,
-    IMainHeadingProps,
-} from "./types";
+import styled from 'styled-components';
+import { IDeviceProps, IExampleContainerProps, IMainHeadingProps } from './types';
 
 export const MainContainer = styled.div<IDeviceProps>`
     width: 100vw;
@@ -17,18 +12,17 @@ export const MainContainer = styled.div<IDeviceProps>`
     margin-bottom: 12vh;
 `;
 
-export const ExampleContainer = styled(motion.div)<IExampleContainerProps>`
-    background: ${(props) =>
-        props.backgroundColor ? props.backgroundColor : "#141414"};
-    width: ${(props) => (props.width ? "80vw" : props.isPc ? "45vw" : "80vw")};
-    height: ${(props) => (props.isPc === true ? "70vh" : "35vh")};
+export const ExampleContainer = styled.div<IExampleContainerProps>`
+    background: ${(props) => (props.backgroundColor ? props.backgroundColor : '#141414')};
+    width: ${(props) => (props.width ? '80vw' : props.isPc ? '45vw' : '80vw')};
+    height: ${(props) => (props.isPc === true ? '70vh' : '35vh')};
     ${(props) =>
-        props.type === "primary" &&
+        props.type === 'primary' &&
         `
-        border-radius: ${props.isPc ? "24px 0 0 0" : "24px 24px 0 0 "};
+        border-radius: ${props.isPc ? '24px 0 0 0' : '24px 24px 0 0 '};
     `}
     ${(props) =>
-        props.type === "secondary" &&
+        props.type === 'secondary' &&
         `
         border-radius: 24px 24px 0 0;
     `}
@@ -70,7 +64,7 @@ export const IntroduceParagraphSpan = styled.span`
         font-size: 1rem;
     }
     line-height: 2rem;
-    color: ${(props) => (props.color ? props.color : "white")};
+    color: ${(props) => (props.color ? props.color : 'white')};
 `;
 
 export const IntroduceContainer = styled.div<IDeviceProps>`
@@ -83,10 +77,10 @@ export const IntroduceContainer = styled.div<IDeviceProps>`
     padding: 16px 0 16px 0;
 `;
 export const MainHeading = styled.h1<IMainHeadingProps>`
-    font-family: "RFLEXBLACK";
+    font-family: 'RFLEXBLACK';
     font-weight: 900;
     color: white;
-    font-size: ${(props) => (props.size ? props.size : "1rem")};
+    font-size: ${(props) => (props.size ? props.size : '1rem')};
     text-align: center;
     @media all and (min-width: 768px) and (max-width: 1023px) {
         font-size: 4rem;
@@ -101,7 +95,7 @@ export const MainHeading = styled.h1<IMainHeadingProps>`
 
 export const StyledP = styled.p`
     color: white;
-    font-family: "RFLEXBLACK";
+    font-family: 'RFLEXBLACK';
     font-weight: 900;
     font-size: 1.3rem;
     letter-spacing: 1px;

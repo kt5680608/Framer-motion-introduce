@@ -11,7 +11,7 @@ export interface IMainHeadingProps {
 export interface IExampleContainerProps extends IDeviceProps {
     backgroundColor?: string;
     width?: string;
-    type: "primary" | "secondary";
+    type: 'primary' | 'secondary';
 }
 export interface ICustomSectionAnimatedCardProps {
     isPc?: boolean;
@@ -38,5 +38,5 @@ export interface IContactSectionProps extends IDeviceProps {
 }
 
 export interface ILoadingFlexProps {
-    direction?: "row" | "column";
+    direction?: 'row' | 'column';
 }

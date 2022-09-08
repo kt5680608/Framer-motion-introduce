@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
     :root {
@@ -30,6 +30,7 @@ export const GlobalStyles = createGlobalStyle`
       align-items: center;
       margin: 0;
       padding: 0;
+      
       @supports (-webkit-touch-callout: none) {
         min-height: -webkit-fill-available;
         }
@@ -64,5 +65,8 @@ export const GlobalStyles = createGlobalStyle`
         font-family: sans-serif;
         margin: 0;
         padding: 0;
+    }
+    li{
+        list-style: none;
     }
 `;

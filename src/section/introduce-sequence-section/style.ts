@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { motion } from "framer-motion";
-import { IDeviceProps } from "../types";
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { IDeviceProps } from '../types';
 
 export const GlassButton = styled(motion.button)<IDeviceProps>`
     background: rgba(255, 255, 255, 0.1);
@@ -16,7 +16,7 @@ export const GlassButton = styled(motion.button)<IDeviceProps>`
     height: 30px;
     position: absolute;
     z-index: 888;
-    left: ${(props) => (props.isPc ? "95%" : "82%")};
-    bottom: ${(props) => (props.isPc ? "90%" : "82%")};
+    left: ${(props) => (props.isPc ? '95%' : '82%')};
+    bottom: ${(props) => (props.isPc ? '90%' : '82%')};
     cursor: pointer;
 `;
