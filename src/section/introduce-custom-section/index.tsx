@@ -49,7 +49,7 @@ function IntroduceCustomSection() {
         <MainContainer isPc={isPc}>
             <>
                 <Box id="introduce-animate-heading-container">
-                    <MainHeading size="4rem">6. CUSTOMIZED</MainHeading>
+                    <MainHeading size="4rem">7. CUSTOMIZED</MainHeading>
                 </Box>
                 <Box
                     id="introduce-animate-content-container"

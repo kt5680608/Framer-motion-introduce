@@ -113,7 +113,7 @@ function IntroduceThreeSection() {
         <MainContainer isPc={isPc}>
             <>
                 <Box id="introduce-animate-heading-container">
-                    <MainHeading size="4rem">5. Three</MainHeading>
+                    <MainHeading size="4rem">6. Three</MainHeading>
                 </Box>
                 <Box
                     id="introduce-three-content-container"

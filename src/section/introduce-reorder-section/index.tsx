@@ -7,17 +7,16 @@ import { MainHeading } from '../section-styles';
 import Item from './item';
 import { Reorder } from 'framer-motion';
 
-function IntroduceCustomSection2() {
-    const [items, setItems] = useState(['zombie', 'ghost', 'crown', 'skeleton']);
+function IntroduceReorderSection() {
+    const [items, setItems] = useState(['demon', 'zombie', 'ghost', 'crown', 'skeleton']);
     const isPc = useMediaQuery({
         query: '(min-width:1024px)',
     });
-
     return (
         <MainContainer isPc={isPc}>
             <>
                 <Box id="introduce-animate-heading-container">
-                    <MainHeading size="4rem">6. CUSTOMIZED-2</MainHeading>
+                    <MainHeading size="4rem">5. REORDER</MainHeading>
                 </Box>
                 <Box
                     id="introduce-animate-content-container"
@@ -55,9 +54,7 @@ function IntroduceCustomSection2() {
                                 alignItems="center"
                             >
                                 <IntroduceParagraph>
-                                    Used with react-hooks, you can add customized interactions. Find various references
-                                    on YouTube, Dribble, and other sites, and move them directly to your website. This
-                                    interaction is inspired by Toss App.
+                                    You can use framer-motion's Reorder function to manipulate the order of the array.
                                 </IntroduceParagraph>
                             </Box>
                         </IntroduceContainer>
@@ -68,4 +65,4 @@ function IntroduceCustomSection2() {
     );
 }
 
-export default IntroduceCustomSection2;
+export default IntroduceReorderSection;

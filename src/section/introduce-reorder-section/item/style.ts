@@ -25,4 +25,5 @@ export const ButtonText = styled.p`
 export const MenuIcon = styled.img`
     width: 36px;
     height: 36px;
+    pointer-events: none;
 `;

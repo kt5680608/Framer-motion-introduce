@@ -7,4 +7,4 @@ export { default as ThreeSection } from './introduce-three-section';
 export { default as CustomSection } from './introduce-custom-section';
 export { default as ContactSection } from './contact-section';
 export { default as LoadingSection } from './loading-section';
-export { default as CustomSection2 } from './introduce-custom-2-section';
+export { default as ReorderSection } from './introduce-reorder-section';

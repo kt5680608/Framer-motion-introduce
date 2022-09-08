@@ -7,18 +7,18 @@ import {
     SequenceSection,
     ThreeSection,
     CustomSection,
-    CustomSection2,
+    ReorderSection,
     ContactSection,
     LoadingSection,
 } from './section';
 import { Box } from 'hoondesign';
 
 function App() {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         setTimeout(() => {
             setLoading(false);
-        }, 4500);
+        }, 3500);
     }, []);
 
     return (
@@ -32,9 +32,9 @@ function App() {
                     <GestureSection />
                     <VariantsSection />
                     <SequenceSection />
+                    <ReorderSection />
                     <ThreeSection />
                     <CustomSection />
-                    <CustomSection2 />
                     <ContactSection />
                 </>
             )}
