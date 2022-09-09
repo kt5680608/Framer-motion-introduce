@@ -202,10 +202,11 @@ function IntroduceThreeSection() {
                         <IntroduceParagraph>
                             Framer Motion 3D is a simple yet powerful animation library for React Three Fiber. It offers
                             most of the same functionality as Framer Motion for declarative 3D scenes. This 3d
-                            interaction works through the user's mouse position in the computer environment. On the
-                            other hand, in a mobile environment, it works by tilting the device's gyro sensor. If you
-                            are in an iOS environment such as iphone, click the upper right button to activate the
-                            sensor.
+                            interaction works through the user's mouse position in the computer environment.
+                            <br />
+                            <br /> On the other hand, in a mobile environment, it works by tilting the device's gyro
+                            sensor. If you are in an iOS environment such as iphone, click the upper right button to
+                            activate the sensor.
                         </IntroduceParagraph>
                     </Box>
                 </IntroduceContainer>

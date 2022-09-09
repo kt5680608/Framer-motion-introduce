@@ -1,49 +1,42 @@
-import React, { useState, useEffect } from "react";
-import { useMediaQuery } from "react-responsive";
-import { useInView } from "react-intersection-observer";
-import { Box } from "hoondesign";
-import { motion } from "framer-motion";
-import { MdRefresh } from "react-icons/md";
-import {
-    AnimatedBox,
-    GlassBox,
-    GlassButton,
-    ControllerContainer,
-    CodeParagraph,
-    CodeSpan,
-} from "./style";
+import React, { useState, useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import { useInView } from 'react-intersection-observer';
+import { Box } from 'hoondesign';
+import { motion } from 'framer-motion';
+import { MdRefresh } from 'react-icons/md';
+import { AnimatedBox, GlassBox, GlassButton, ControllerContainer, CodeParagraph, CodeSpan } from './style';
 import {
     MainContainer,
     MainHeading,
     ExampleContainer,
     IntroduceParagraph,
     IntroduceContainer,
-} from "../section-styles";
+} from '../section-styles';
 
 function VariantsSection() {
     const isPc = useMediaQuery({
-        query: "(min-width:1024px)",
+        query: '(min-width:1024px)',
     });
     const isMobile = useMediaQuery({
-        query: "(max-width:767px)",
+        query: '(max-width:767px)',
     });
 
     const [ref, inView] = useInView({ trackVisibility: true, delay: 100 });
     const [animationStart, setAnimationStart] = useState(false);
-    const code = "const";
-    const rest = ", ";
-    const code1 = " container = {";
+    const code = 'const';
+    const rest = ', ';
+    const code1 = ' container = {';
     const code2 = `     hidden: { opacity: `;
-    const code3 = " },";
-    const code4 = "     show: { ";
-    const code5 = "y: ";
-    const code6 = "opacity: ";
-    const code7 = "         transition: { ";
-    const code8 = "             staggerChildren: ";
-    const code9 = "             delayChildren: ";
-    const code10 = "         }";
-    const code11 = "     }";
-    const code12 = "}";
+    const code3 = ' },';
+    const code4 = '     show: { ';
+    const code5 = 'y: ';
+    const code6 = 'opacity: ';
+    const code7 = '         transition: { ';
+    const code8 = '             staggerChildren: ';
+    const code9 = '             delayChildren: ';
+    const code10 = '         }';
+    const code11 = '     }';
+    const code12 = '}';
 
     useEffect(() => {
         if (inView === true) {
@@ -69,7 +62,7 @@ function VariantsSection() {
             transition: {
                 staggerChildren: 0.3,
                 delayChildren: 0.3,
-                type: "spring",
+                type: 'spring',
             },
         },
         exit: {
@@ -83,7 +76,7 @@ function VariantsSection() {
             opacity: 1,
 
             transition: {
-                type: "spring",
+                type: 'spring',
             },
         },
     };
@@ -125,11 +118,11 @@ function VariantsSection() {
                                 >
                                     <motion.div
                                         style={{
-                                            display: "flex",
-                                            justifyContent: "center",
-                                            alignItems: "center",
-                                            width: "100%",
-                                            height: "100%",
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            width: '100%',
+                                            height: '100%',
                                         }}
                                         variants={hoverChild}
                                         initial="rest"
@@ -139,11 +132,7 @@ function VariantsSection() {
                                     </motion.div>
                                 </GlassButton>
                                 {animationStart && (
-                                    <GlassBox
-                                        variants={container}
-                                        animate="show"
-                                        initial="hidden"
-                                    >
+                                    <GlassBox variants={container} animate="show" initial="hidden">
                                         <AnimatedBox variants={item} />
                                         <AnimatedBox variants={item} />
                                         <AnimatedBox variants={item} />
@@ -163,29 +152,21 @@ function VariantsSection() {
                                 >
                                     <Box id="introduce-variants-controller-code-detail">
                                         <CodeParagraph>
-                                            <CodeSpan color="hsl(204, 100%, 50%)">
-                                                {code}
-                                            </CodeSpan>
+                                            <CodeSpan color="hsl(204, 100%, 50%)">{code}</CodeSpan>
                                             <CodeSpan>{code1}</CodeSpan>
                                         </CodeParagraph>
                                         <CodeParagraph>
                                             <CodeSpan>{code2}</CodeSpan>
-                                            <CodeSpan color="#FF9977">
-                                                0
-                                            </CodeSpan>
+                                            <CodeSpan color="#FF9977">0</CodeSpan>
                                             <CodeSpan>{code3}</CodeSpan>
                                         </CodeParagraph>
                                         <CodeParagraph>
                                             <CodeSpan>{code4}</CodeSpan>
                                             <CodeSpan>{code5}</CodeSpan>
-                                            <CodeSpan color="#FF9977">
-                                                0
-                                            </CodeSpan>
+                                            <CodeSpan color="#FF9977">0</CodeSpan>
                                             <CodeSpan>{rest}</CodeSpan>
                                             <CodeSpan>{code6}</CodeSpan>
-                                            <CodeSpan color="#FF9977">
-                                                1
-                                            </CodeSpan>
+                                            <CodeSpan color="#FF9977">1</CodeSpan>
                                             <CodeSpan>{rest}</CodeSpan>
                                         </CodeParagraph>
                                         <CodeParagraph>
@@ -194,16 +175,12 @@ function VariantsSection() {
 
                                         <CodeParagraph>
                                             <CodeSpan>{code8}</CodeSpan>
-                                            <CodeSpan color="#ff9977">
-                                                0.3
-                                            </CodeSpan>
+                                            <CodeSpan color="#ff9977">0.3</CodeSpan>
                                             <CodeSpan>{rest}</CodeSpan>
                                         </CodeParagraph>
                                         <CodeParagraph>
                                             <CodeSpan>{code9}</CodeSpan>
-                                            <CodeSpan color="#ff9977">
-                                                0.3
-                                            </CodeSpan>
+                                            <CodeSpan color="#ff9977">0.3</CodeSpan>
                                             <CodeSpan>{rest}</CodeSpan>
                                         </CodeParagraph>
                                         <CodeParagraph>
@@ -221,19 +198,11 @@ function VariantsSection() {
                         </Box>
                     </Box>
                     <IntroduceContainer isPc={isPc}>
-                        <Box
-                            id="introduce-variants-paragraph-container"
-                            width="90%"
-                        >
+                        <Box id="introduce-variants-paragraph-container" width="90%">
                             <IntroduceParagraph>
-                                Variants are a declarative way to orchestrate
-                                complex animations throughout a component tree.
-                                <br />
-                                By providing multiple components with a variants
-                                object with visual states of the same name,
-                                <br />
-                                they can all be animated in sync by the switch
-                                of a single animate prop.
+                                Variants are a declarative way to orchestrate complex animations throughout a component
+                                tree. By providing multiple components with a variants object with visual states of the
+                                same name, they can all be animated in sync by the switch of a single animate prop.
                             </IntroduceParagraph>
                         </Box>
                     </IntroduceContainer>
@@ -275,11 +244,11 @@ function VariantsSection() {
                                 >
                                     <motion.div
                                         style={{
-                                            display: "flex",
-                                            justifyContent: "center",
-                                            alignItems: "center",
-                                            width: "100%",
-                                            height: "100%",
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            width: '100%',
+                                            height: '100%',
                                         }}
                                         variants={hoverChild}
                                         initial="rest"
@@ -289,11 +258,7 @@ function VariantsSection() {
                                     </motion.div>
                                 </GlassButton>
                                 {animationStart && (
-                                    <GlassBox
-                                        variants={container}
-                                        animate="show"
-                                        initial="hidden"
-                                    >
+                                    <GlassBox variants={container} animate="show" initial="hidden">
                                         <AnimatedBox variants={item} />
                                         <AnimatedBox variants={item} />
                                         <AnimatedBox variants={item} />
@@ -313,29 +278,21 @@ function VariantsSection() {
                                 >
                                     <Box id="introduce-variants-controller-code-detail">
                                         <CodeParagraph>
-                                            <CodeSpan color="hsl(204, 100%, 50%)">
-                                                {code}
-                                            </CodeSpan>
+                                            <CodeSpan color="hsl(204, 100%, 50%)">{code}</CodeSpan>
                                             <CodeSpan>{code1}</CodeSpan>
                                         </CodeParagraph>
                                         <CodeParagraph>
                                             <CodeSpan>{code2}</CodeSpan>
-                                            <CodeSpan color="#FF9977">
-                                                0
-                                            </CodeSpan>
+                                            <CodeSpan color="#FF9977">0</CodeSpan>
                                             <CodeSpan>{code3}</CodeSpan>
                                         </CodeParagraph>
                                         <CodeParagraph>
                                             <CodeSpan>{code4}</CodeSpan>
                                             <CodeSpan>{code5}</CodeSpan>
-                                            <CodeSpan color="#FF9977">
-                                                0
-                                            </CodeSpan>
+                                            <CodeSpan color="#FF9977">0</CodeSpan>
                                             <CodeSpan>{rest}</CodeSpan>
                                             <CodeSpan>{code6}</CodeSpan>
-                                            <CodeSpan color="#FF9977">
-                                                1
-                                            </CodeSpan>
+                                            <CodeSpan color="#FF9977">1</CodeSpan>
                                             <CodeSpan>{rest}</CodeSpan>
                                         </CodeParagraph>
                                         <CodeParagraph>
@@ -344,16 +301,12 @@ function VariantsSection() {
 
                                         <CodeParagraph>
                                             <CodeSpan>{code8}</CodeSpan>
-                                            <CodeSpan color="#ff9977">
-                                                0.3
-                                            </CodeSpan>
+                                            <CodeSpan color="#ff9977">0.3</CodeSpan>
                                             <CodeSpan>{rest}</CodeSpan>
                                         </CodeParagraph>
                                         <CodeParagraph>
                                             <CodeSpan>{code9}</CodeSpan>
-                                            <CodeSpan color="#ff9977">
-                                                0.3
-                                            </CodeSpan>
+                                            <CodeSpan color="#ff9977">0.3</CodeSpan>
                                             <CodeSpan>{rest}</CodeSpan>
                                         </CodeParagraph>
                                         <CodeParagraph>
@@ -371,19 +324,15 @@ function VariantsSection() {
                         </Box>
                     </Box>
                     <IntroduceContainer isPc={isPc}>
-                        <Box
-                            id="introduce-variants-paragraph-container"
-                            width="90%"
-                        >
+                        <Box id="introduce-variants-paragraph-container" width="90%">
                             <IntroduceParagraph>
-                                Variants are a declarative way to orchestrate
-                                complex animations throughout a component tree.
+                                Variants are a declarative way to orchestrate complex animations throughout a component
+                                tree.
                                 <br />
-                                By providing multiple components with a variants
-                                object with visual states of the same name,
+                                By providing multiple components with a variants object with visual states of the same
+                                name,
                                 <br />
-                                they can all be animated in sync by the switch
-                                of a single animate prop.
+                                they can all be animated in sync by the switch of a single animate prop.
                             </IntroduceParagraph>
                         </Box>
                     </IntroduceContainer>

@@ -9,9 +9,7 @@ import { Reorder } from 'framer-motion';
 
 function IntroduceReorderSection() {
     const [items, setItems] = useState(['demon', 'zombie', 'ghost', 'crown', 'skeleton']);
-    useEffect(() => {
-        console.log(items);
-    }, [items]);
+
     const isPc = useMediaQuery({
         query: '(min-width:1024px)',
     });
