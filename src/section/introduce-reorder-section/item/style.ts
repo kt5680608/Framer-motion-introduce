@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MenuButton = styled.div`
     width: 100%;
-    height: 36px;
+    height: 5vh;
     border-radius: 24px;
     background-color: black;
     border: none;

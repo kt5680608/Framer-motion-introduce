@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MainContainer, IntroduceParagraph, IntroduceContainer } from '../section-styles';
 import { CustomExampleContainer } from './style';
 import { useMediaQuery } from 'react-responsive';
@@ -9,6 +9,9 @@ import { Reorder } from 'framer-motion';
 
 function IntroduceReorderSection() {
     const [items, setItems] = useState(['demon', 'zombie', 'ghost', 'crown', 'skeleton']);
+    useEffect(() => {
+        console.log(items);
+    }, [items]);
     const isPc = useMediaQuery({
         query: '(min-width:1024px)',
     });
@@ -55,6 +58,7 @@ function IntroduceReorderSection() {
                             >
                                 <IntroduceParagraph>
                                     You can use framer-motion's Reorder function to manipulate the order of the array.
+                                    With drag and drop gestures you can adjust the index of the array.
                                 </IntroduceParagraph>
                             </Box>
                         </IntroduceContainer>
