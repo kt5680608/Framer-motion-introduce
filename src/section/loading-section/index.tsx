@@ -1,12 +1,10 @@
-import { Box } from "hoondesign";
-import {
-    LoadingBox,
-    LoadingP,
-    LoadingProgress,
-    LoadingFlex,
-    Circle,
-} from "./style";
+import { Box } from 'hoondesign';
+import { LoadingMessage } from './loading-message';
+import { LoadingBox, LoadingImage, LoadingText } from './style';
+
 function LoadingSection() {
+    const randomElement = LoadingMessage[Math.floor(Math.random() * LoadingMessage.length)];
+
     return (
         <Box
             id="loading-section-main-container"
@@ -17,93 +15,25 @@ function LoadingSection() {
             alignItems="center"
         >
             <LoadingBox>
-                <LoadingFlex direction="column">
-                    <LoadingFlex direction="row">
-                        <LoadingFlex>
-                            <LoadingProgress
-                                initial={{ rotate: 0 }}
-                                animate={{ rotate: 120 }}
-                                transition={{
-                                    repeatType: "mirror",
-                                    repeat: 2,
-                                    duration: 0.5,
-                                    type: "ease",
-                                    repeatDelay: 1,
-                                }}
-                            />
-                            <LoadingProgress
-                                initial={{ rotate: 60 }}
-                                animate={{ rotate: 0 }}
-                                transition={{
-                                    repeatType: "mirror",
-                                    repeat: 2,
-                                    duration: 0.5,
-                                    type: "ease",
-                                    repeatDelay: 1,
-                                }}
-                            />
-                            <LoadingProgress
-                                initial={{ rotate: 120 }}
-                                animate={{ rotate: 60 }}
-                                transition={{
-                                    repeatType: "mirror",
-                                    repeat: 2,
-                                    duration: 0.5,
-                                    type: "ease",
-                                    repeatDelay: 1,
-                                }}
-                            />
-                        </LoadingFlex>
-                        <LoadingFlex>
-                            <Circle
-                                initial={{ scale: 0.8 }}
-                                animate={{ scale: 1.0 }}
-                                transition={{
-                                    repeatType: "mirror",
-                                    repeat: 2,
-                                    duration: 0.5,
-                                    type: "ease",
-                                    repeatDelay: 1,
-                                }}
-                            />
-                        </LoadingFlex>
-                        <LoadingFlex
-                            initial={{ rotate: 0 }}
-                            animate={{ rotate: 45 }}
-                            transition={{
-                                repeatType: "mirror",
-                                repeat: 2,
-                                duration: 0.5,
-                                type: "ease",
-                                repeatDelay: 1,
-                            }}
-                        >
-                            <LoadingProgress
-                                initial={{ rotate: 90 }}
-                                transition={{
-                                    repeatType: "mirror",
-                                    repeat: 2,
-                                    duration: 0.5,
-                                    type: "ease",
-                                    repeatDelay: 1,
-                                }}
-                            />
-                            <LoadingProgress
-                                initial={{ rotate: 0 }}
-                                transition={{
-                                    repeatType: "mirror",
-                                    repeat: 2,
-                                    duration: 0.5,
-                                    type: "ease",
-                                    repeatDelay: 1,
-                                }}
-                            />
-                        </LoadingFlex>
-                    </LoadingFlex>
-                    <LoadingFlex>
-                        <LoadingP>Hoon's Playground Coming</LoadingP>
-                    </LoadingFlex>
-                </LoadingFlex>
+                <LoadingImage
+                    animate={{
+                        rotate: 360,
+                        transition: {
+                            type: 'spring',
+                            duration: 0.9,
+                            delay: 0.3,
+                            repeatDelay: 1,
+                            repeat: 1,
+                        },
+                    }}
+                    src="sleeping.png"
+                />
+                <LoadingText
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1, transition: { duration: 0.6 } }}
+                >
+                    {randomElement}
+                </LoadingText>
             </LoadingBox>
         </Box>
     );

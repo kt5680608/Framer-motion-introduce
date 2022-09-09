@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const MenuButton = styled.div`
+export const MenuButton = styled(motion.div)`
     width: 100%;
     height: 5vh;
     border-radius: 24px;
