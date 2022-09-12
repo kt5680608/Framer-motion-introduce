@@ -1,9 +1,10 @@
 import { Box } from 'hoondesign';
-import { LoadingMessage } from './loading-message';
+import { loadingMessageArray, loadingImageArray } from './loading-message';
 import { LoadingBox, LoadingImage, LoadingText } from './style';
 
 function LoadingSection() {
-    const randomElement = LoadingMessage[Math.floor(Math.random() * LoadingMessage.length)];
+    const randomElement = loadingMessageArray[Math.floor(Math.random() * loadingMessageArray.length)];
+    const randomImage = loadingImageArray[Math.floor(Math.random() * loadingImageArray.length)];
 
     return (
         <Box
@@ -16,17 +17,9 @@ function LoadingSection() {
         >
             <LoadingBox>
                 <LoadingImage
-                    animate={{
-                        rotate: 360,
-                        transition: {
-                            type: 'spring',
-                            duration: 0.9,
-                            delay: 0.3,
-                            repeatDelay: 1,
-                            repeat: 1,
-                        },
-                    }}
-                    src="sleeping.png"
+                    src={`${randomImage}.png`}
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1, transition: { duration: 0.6 } }}
                 />
                 <LoadingText
                     initial={{ y: 30, opacity: 0 }}

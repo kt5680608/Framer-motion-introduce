@@ -1,4 +1,4 @@
-export const LoadingMessage = [
+export const loadingMessageArray = [
     'Reticulating splines...',
     'Generating witty dialog...',
     'Swapping time and space...',
@@ -251,4 +251,29 @@ export const LoadingMessage = [
     'Adjusting the dilithium crystal converter assembly',
     'Reversing the shield polarity',
     'Disrupting warp fields with an inverse graviton burst',
+];
+
+export const loadingImageArray = [
+    'complete',
+    'crown',
+    'demon',
+    'ghost',
+    'profile',
+    'skeleton',
+    'sleeping',
+    'zombie',
+    'smile1',
+    'smile2',
+    'smile3',
+    'smile4',
+    'smile5',
+    'smile6',
+    'heart1',
+    'heart2',
+    'heart3',
+    'angry1',
+    'angry2',
+    'hurt',
+    'frozen',
+    'vomit',
 ];

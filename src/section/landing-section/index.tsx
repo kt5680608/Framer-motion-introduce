@@ -1,7 +1,7 @@
-import React from "react";
-import { Box } from "hoondesign";
-import { MainHeading } from "../section-styles";
-import { MainContainer } from "./style";
+import React from 'react';
+import { Box } from 'hoondesign';
+import { MainHeading } from '../section-styles';
+import { MainContainer } from './style';
 function LandingSection() {
     return (
         <MainContainer>
@@ -12,7 +12,20 @@ function LandingSection() {
                 alignItems="center"
                 flexDirection="column"
             >
-                <MainHeading size="5rem">
+                <MainHeading
+                    size="5rem"
+                    initial={{
+                        y: 30,
+                        opacity: 0,
+                    }}
+                    animate={{
+                        y: 0,
+                        opacity: 1,
+                        transition: {
+                            duration: 0.6,
+                        },
+                    }}
+                >
                     HOON'S ANIMATION
                     <br />
                     PLAYGROUND

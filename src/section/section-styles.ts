@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { IDeviceProps, IExampleContainerProps, IMainHeadingProps } from './types';
+import { motion } from 'framer-motion';
 
 export const MainContainer = styled.div<IDeviceProps>`
     width: 100vw;
@@ -76,7 +77,7 @@ export const IntroduceContainer = styled.div<IDeviceProps>`
     align-items: center;
     padding: 16px 0 16px 0;
 `;
-export const MainHeading = styled.h1<IMainHeadingProps>`
+export const MainHeading = styled(motion.h1)<IMainHeadingProps>`
     font-family: 'RFLEXBLACK';
     font-weight: 900;
     color: white;

@@ -15,13 +15,13 @@ import { Box } from 'hoondesign';
 
 function App() {
     const [loading, setLoading] = useState(true);
-    const loadingSequnce = async () => {
+    const loadingSequence = async () => {
         await setTimeout(() => {
             setLoading(false);
-        }, 3500);
+        }, 2500);
     };
     useEffect(() => {
-        loadingSequnce();
+        loadingSequence();
     }, []);
 
     return (
